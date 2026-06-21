@@ -1,0 +1,1651 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UV塑料油墨耐酒精怎么测？化妆品瓶印刷客户要注意这几个条件 | 卡林托油墨技术文章</title>
+    <meta name="description" content="UV塑料油墨耐酒精测试，不能只看“用酒精擦一下掉不掉色”。对于化妆品瓶、日化瓶、洗护瓶、消毒类包装等塑料印刷场景，测试前要明确酒精浓度、擦拭方式、擦拭次数、接触时间、测试力度、UV固化条件和判定标准。">
+    <link rel="icon" href="favicon.ico" sizes="any">
+    <style>
+        :root {
+            --paper: #f7f3ec;
+            --paper-deep: #ebe4d8;
+            --ink: #1d1b18;
+            --muted: #6d675f;
+            --line: #d8d0c3;
+            --green: #46594f;
+            --green-deep: #26352f;
+            --oxide: #9a432d;
+            --white: #fffaf2;
+        }
+
+        @font-face {
+            font-family: "Inter";
+            src: url("fonts/Inter-Variable.ttf") format("truetype");
+            font-weight: 100 900;
+            font-style: normal;
+            font-display: swap;
+        }
+
+        @font-face {
+            font-family: "Noto Sans SC";
+            src: url("fonts/NotoSansSC-Variable.ttf") format("truetype");
+            font-weight: 100 900;
+            font-style: normal;
+            font-display: swap;
+        }
+
+        @font-face {
+            font-family: "Noto Serif SC";
+            src: url("fonts/NotoSerifSC-Variable.ttf") format("truetype");
+            font-weight: 100 900;
+            font-style: normal;
+            font-display: swap;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* 字体修改位置：全站正文字体改这里；当前字体均使用 OFL 免费商用字体。 */
+        body {
+            margin: 0;
+            background: var(--paper);
+            color: var(--ink);
+            font-family: "Inter", "Noto Sans SC", sans-serif;
+            font-size: 16px;
+            line-height: 1.7;
+            letter-spacing: 0;
+        }
+
+        img {
+            display: block;
+            max-width: 100%;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        .site-header {
+            position: fixed;
+            inset: 0 0 auto;
+            z-index: 50;
+            display: grid;
+            grid-template-columns: minmax(260px, 1fr) auto minmax(130px, 1fr);
+            align-items: center;
+            gap: 32px;
+            min-height: 102px;
+            padding: 0 50px;
+            color: var(--white);
+            border-bottom: 1px solid rgba(255, 250, 242, 0.22);
+            background: linear-gradient(180deg, rgba(29, 27, 24, 0.74), rgba(29, 27, 24, 0.18));
+            backdrop-filter: blur(16px);
+        }
+
+        .brand {
+            display: inline-flex;
+            align-items: center;
+            gap: 16px;
+            font-size: 26px;
+            font-weight: 700;
+            white-space: nowrap;
+            line-height: 1;
+        }
+
+        .brand-logo {
+            width: 72px;
+            height: 54px;
+            object-fit: contain;
+            flex: 0 0 auto;
+        }
+
+        .brand-text {
+            display: inline-block;
+        }
+
+        .nav {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 26px;
+            font-size: 20px;
+            font-weight: 600;
+            color: rgba(255, 250, 242, 0.9);
+            white-space: nowrap;
+        }
+
+        .nav a,
+        .header-cta {
+            transition: color 180ms ease, border-color 180ms ease, background 180ms ease;
+        }
+
+        .nav a:hover {
+            color: #ffffff;
+        }
+
+        .header-cta {
+            justify-self: end;
+            border: 1px solid rgba(255, 250, 242, 0.72);
+            padding: 9px 18px;
+            font-size: 16px;
+            color: var(--white);
+        }
+
+        .header-cta:hover {
+            background: var(--white);
+            color: var(--ink);
+        }
+
+        .hero {
+            position: relative;
+            min-height: 88vh;
+            display: grid;
+            align-items: end;
+            overflow: hidden;
+            background: var(--ink);
+        }
+
+        /* 图片修改位置：首屏主图，替换 images/hero-main.png 这个文件或改下面 url(...)。 */
+        .hero::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background-image:
+                linear-gradient(90deg, rgba(24, 23, 20, 0.84) 0%, rgba(24, 23, 20, 0.46) 48%, rgba(24, 23, 20, 0.1) 100%),
+                url("images/hero-main.png");
+            background-size: cover;
+            background-position: center;
+            transform: scale(1.02);
+        }
+
+        .hero-inner {
+            position: relative;
+            width: min(1180px, calc(100% - 48px));
+            margin: 0 auto;
+            padding: 160px 0 92px;
+            color: var(--white);
+        }
+
+        .eyebrow {
+            margin: 0 0 22px;
+            font-size: 12px;
+            line-height: 1.4;
+            letter-spacing: 0;
+            text-transform: uppercase;
+            color: rgba(255, 250, 242, 0.78);
+        }
+
+        /* 字体修改位置：首屏大标题字体改这里。 */
+        .hero h1 {
+            max-width: 760px;
+            margin: 0;
+            font-family: "Noto Serif SC", serif;
+            font-size: clamp(48px, 7vw, 102px);
+            font-weight: 400;
+            line-height: 0.98;
+            letter-spacing: 0;
+        }
+
+        .hero-lead {
+            max-width: 660px;
+            margin: 30px 0 0;
+            font-size: clamp(18px, 2vw, 24px);
+            line-height: 1.55;
+            color: rgba(255, 250, 242, 0.88);
+        }
+
+        .hero-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 14px;
+            margin-top: 42px;
+        }
+
+        .button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 48px;
+            padding: 12px 22px;
+            border: 1px solid var(--ink);
+            background: var(--ink);
+            color: var(--white);
+            font-size: 14px;
+            line-height: 1.2;
+            transition: transform 180ms ease, background 180ms ease, color 180ms ease, border-color 180ms ease;
+        }
+
+        .hero-actions .button {
+            font-size: 16px;
+        }
+
+        .button:hover {
+            transform: translateY(-1px);
+            background: transparent;
+            color: var(--ink);
+        }
+
+        .button.light {
+            border-color: rgba(255, 250, 242, 0.8);
+            background: var(--white);
+            color: var(--ink);
+        }
+
+        .button.light:hover {
+            background: transparent;
+            color: var(--white);
+        }
+
+        .button.ghost {
+            background: transparent;
+            color: var(--white);
+            border-color: rgba(255, 250, 242, 0.52);
+        }
+
+        .button.ghost:hover {
+            background: rgba(255, 250, 242, 0.12);
+        }
+
+        .section {
+            padding: 104px 0;
+            border-top: 1px solid var(--line);
+        }
+
+        .section.alt {
+            background: var(--paper-deep);
+        }
+
+        .section.product-section {
+            padding-top: 0;
+        }
+
+        .wrap {
+            width: min(1180px, calc(100% - 48px));
+            margin: 0 auto;
+        }
+
+        .section-head {
+            display: grid;
+            grid-template-columns: minmax(170px, 0.34fr) minmax(0, 0.66fr);
+            gap: 56px;
+            align-items: start;
+            margin-bottom: 64px;
+        }
+
+        /* 图片修改位置：产品体系橙色刷痕背景，替换 images/orange-brush-ink-bg-top-paper.png。 */
+        .product-hero {
+            position: relative;
+            height: clamp(360px, 37.5vw, 720px);
+            min-height: 0;
+            display: grid;
+            place-items: center;
+            overflow: hidden;
+            margin: 0 0 72px;
+            color: #ffffff;
+            background: var(--paper-deep) url("images/orange-brush-ink-bg-top-paper.png") center / 100% 100% no-repeat;
+        }
+
+        .product-hero::before,
+        .product-hero::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+            display: none;
+        }
+
+
+        .product-hero-inner {
+            position: relative;
+            z-index: 1;
+            width: min(1180px, calc(100% - 48px));
+            margin: 0 auto;
+            text-align: center;
+            padding-top: 18px;
+        }
+
+        .product-hero .kicker {
+            color: rgba(255, 255, 255, 0.86);
+            font-size: 23px;
+        }
+
+        /* 字体修改位置：产品体系大标题字体改这里。 */
+        .product-hero h2 {
+            margin-top: 18px;
+            color: #ffffff;
+            font-family: "Inter", "Noto Sans SC", sans-serif;
+            font-size: clamp(44px, 5vw, 72px);
+            font-weight: 800;
+            line-height: 1.08;
+            white-space: nowrap;
+            text-shadow: 0 2px 18px rgba(171, 43, 0, 0.18);
+        }
+
+        .product-hero .muted {
+            max-width: 880px;
+            margin: 26px auto 0;
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 21px;
+            line-height: 1.8;
+        }
+
+        .kicker {
+            margin: 0;
+            color: var(--green);
+            font-size: 13px;
+            font-weight: 700;
+        }
+
+        /* 字体修改位置：各栏目大标题字体改这里。 */
+        h2 {
+            margin: 0;
+            font-family: "Noto Serif SC", serif;
+            font-size: clamp(34px, 4.8vw, 64px);
+            font-weight: 400;
+            line-height: 1.08;
+            letter-spacing: 0;
+        }
+
+        h3 {
+            margin: 0;
+            font-family: "Noto Serif SC", serif;
+            font-size: 28px;
+            font-weight: 400;
+            line-height: 1.2;
+            letter-spacing: 0;
+        }
+
+        h4 {
+            margin: 0;
+            font-size: 18px;
+            line-height: 1.35;
+        }
+
+        .nowrap {
+            white-space: nowrap;
+        }
+
+        .large-copy {
+            margin: 0;
+            font-size: clamp(20px, 2.4vw, 31px);
+            line-height: 1.48;
+        }
+
+        .muted {
+            color: var(--muted);
+        }
+
+        .intro-grid {
+            display: grid;
+            grid-template-columns: 0.92fr 1.08fr;
+            gap: 72px;
+            align-items: center;
+        }
+
+        .intro-image {
+            overflow: hidden;
+            background: #d2c6b5;
+        }
+
+        .intro-image img {
+            display: block;
+            width: 100%;
+            height: auto;
+            object-fit: contain;
+        }
+
+        .intro-copy .kicker {
+            font-size: 26px;
+        }
+
+        .proof-list {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1px;
+            margin-top: 46px;
+            background: var(--line);
+            border: 1px solid var(--line);
+        }
+
+        .proof-item {
+            min-height: 150px;
+            padding: 28px;
+            background: var(--paper);
+        }
+
+        .proof-number {
+            display: block;
+            margin-bottom: 16px;
+            font-family: "Noto Serif SC", serif;
+            font-size: 40px;
+            line-height: 1;
+        }
+
+        .proof-item p {
+            margin: 0;
+            color: var(--muted);
+            font-size: 24px;
+            line-height: 1.7;
+        }
+
+        .category-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1px;
+            background: var(--line);
+            border: 1px solid var(--line);
+        }
+
+        .category {
+            min-height: 300px;
+            padding: 30px;
+            background: var(--paper);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .category strong {
+            display: block;
+            margin-bottom: 14px;
+            font-size: 24px;
+            font-weight: 500;
+        }
+
+        .category p {
+            margin: 0;
+            color: var(--muted);
+            font-size: 20px;
+        }
+
+        .swatch-row {
+            display: flex;
+            gap: 9px;
+            margin-top: 34px;
+        }
+
+        .swatch {
+            width: 26px;
+            height: 26px;
+            border-radius: 50%;
+            border: 1px solid rgba(29, 27, 24, 0.18);
+        }
+
+        .swatch.black { background: #171411; }
+        .swatch.red { background: #9a432d; }
+        .swatch.green { background: #46594f; }
+        .swatch.blue { background: #314f66; }
+        .swatch.clear { background: #f3eee4; }
+
+        .advantage-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 0;
+            border-top: 1px solid var(--line);
+            border-left: 1px solid var(--line);
+        }
+
+        .advantage-head {
+            display: block;
+            text-align: center;
+            margin-bottom: 58px;
+        }
+
+        .advantage-head .kicker {
+            margin-bottom: 18px;
+            font-size: 23px;
+        }
+
+        .advantage-head h2 {
+            white-space: nowrap;
+            font-size: clamp(36px, 4vw, 52px);
+        }
+
+        .advantage {
+            min-height: 250px;
+            padding: 34px;
+            border-right: 1px solid var(--line);
+            border-bottom: 1px solid var(--line);
+        }
+
+        .advantage h3 {
+            margin-bottom: 24px;
+            font-size: 30px;
+        }
+
+        .advantage p {
+            margin: 0;
+            color: var(--muted);
+            font-size: 24px;
+            line-height: 1.75;
+        }
+
+        .product-block {
+            display: grid;
+            grid-template-columns: minmax(180px, 0.3fr) minmax(0, 0.7fr);
+            gap: 56px;
+            padding: 50px 0;
+            border-top: 1px solid var(--line);
+        }
+
+        .product-block:last-child {
+            border-bottom: 1px solid var(--line);
+        }
+
+        .product-title h3 {
+            font-size: 32px;
+        }
+
+        .product-title small {
+            display: block;
+            margin-top: 12px;
+            color: var(--muted);
+            font-size: 20px;
+            line-height: 1.65;
+        }
+
+        .series-thumb {
+            display: block;
+            width: min(230px, 100%);
+            margin-top: 28px;
+            aspect-ratio: 1 / 1;
+            object-fit: cover;
+            background: #f4efe5;
+            box-shadow: 0 18px 38px rgba(31, 26, 20, 0.12);
+        }
+
+        .product-table-wrap {
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+            min-width: 720px;
+            border-collapse: collapse;
+            background: rgba(255, 250, 242, 0.56);
+        }
+
+        th,
+        td {
+            padding: 16px 18px;
+            border: 1px solid var(--line);
+            text-align: left;
+            vertical-align: top;
+            font-size: 20px;
+            line-height: 1.75;
+        }
+
+        th {
+            width: 16%;
+            color: var(--green-deep);
+            font-weight: 700;
+            background: rgba(70, 89, 79, 0.08);
+        }
+
+        .material-panel {
+            display: grid;
+            grid-template-columns: 0.9fr 1.1fr;
+            gap: 58px;
+            align-items: stretch;
+        }
+
+        /* 图片修改位置：应用场景左侧背景图，替换下面 url(...) 里的图片地址。 */
+        .material-photo {
+            min-height: 520px;
+            background-image:
+                linear-gradient(180deg, rgba(29, 27, 24, 0.05), rgba(29, 27, 24, 0.28)),
+                url("images/application-screen-printing-orange-reference-01.png");
+            background-size: cover;
+            background-position: center;
+        }
+
+        .material-copy {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 28px 0;
+        }
+
+        .material-list {
+            display: grid;
+            gap: 22px;
+            margin: 36px 0 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .material-copy .kicker {
+            font-size: 23px;
+        }
+
+        .material-list li {
+            padding-top: 22px;
+            border-top: 1px solid var(--line);
+        }
+
+        .material-list strong {
+            display: block;
+            margin-bottom: 6px;
+            font-size: 24px;
+        }
+
+        .material-list span {
+            color: var(--muted);
+            font-size: 22px;
+            line-height: 1.7;
+        }
+
+        .news-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1px;
+            background: var(--line);
+            border: 1px solid var(--line);
+        }
+
+        .news-card {
+            display: grid;
+            grid-template-rows: auto 1fr;
+            background: var(--paper);
+            min-height: 100%;
+            transition: transform 180ms ease, box-shadow 180ms ease;
+        }
+
+        .news-card img {
+            width: 100%;
+            aspect-ratio: 4 / 3;
+            object-fit: cover;
+            background: #d0c4b4;
+        }
+
+        .news-card-body {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            padding: 28px;
+        }
+
+        .news-date {
+            color: var(--green);
+            font-size: 13px;
+            font-weight: 700;
+        }
+
+        .news-card h3 {
+            font-size: 27px;
+        }
+
+        .news-card p {
+            margin: 0;
+            color: var(--muted);
+        }
+
+        .news-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 18px 40px rgba(31, 26, 20, 0.12);
+        }
+
+        .about-band {
+            display: grid;
+            width: min(1416px, calc(100% - 48px));
+            grid-template-columns: minmax(0, 700px) minmax(0, 1fr);
+            gap: 36px;
+            align-items: center;
+        }
+
+        .about-photo {
+            overflow: hidden;
+            background: transparent;
+        }
+
+        .about-photo img {
+            display: block;
+            width: 100%;
+            height: auto;
+            object-fit: contain;
+        }
+
+        .about-copy p {
+            margin: 20px 0 0;
+            color: var(--muted);
+        }
+
+        .about-copy p + p {
+            margin-top: 0;
+        }
+
+        .about-copy .kicker {
+            font-size: 26px;
+        }
+
+        .about-copy p:not(.kicker) {
+            font-size: 24px;
+            line-height: 1.75;
+        }
+
+        .contact {
+            background: var(--green-deep);
+            color: var(--white);
+        }
+
+        .contact .section-head {
+            grid-template-columns: minmax(130px, 0.12fr) minmax(0, 0.88fr);
+            gap: 34px;
+            margin-bottom: 54px;
+        }
+
+        .contact .section-head h2 {
+            font-size: clamp(32px, 3.2vw, 48px);
+            white-space: nowrap;
+        }
+
+        .contact .kicker,
+        .contact .muted {
+            color: rgba(255, 250, 242, 0.7);
+        }
+
+        .contact .kicker {
+            font-size: 23px;
+        }
+
+        .contact .muted {
+            font-size: 26px;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 0.9fr 1.1fr;
+            gap: 60px;
+            align-items: start;
+        }
+
+        .contact-lines {
+            display: grid;
+            gap: 24px;
+            padding-top: 10px;
+        }
+
+        .contact-line {
+            padding-top: 24px;
+            border-top: 1px solid rgba(255, 250, 242, 0.22);
+        }
+
+        .contact-line strong {
+            display: block;
+            margin-bottom: 6px;
+            color: #ffffff;
+            font-size: 24px;
+        }
+
+        .contact-line span {
+            color: rgba(255, 250, 242, 0.72);
+            font-size: 22px;
+            line-height: 1.65;
+        }
+
+        .form {
+            display: grid;
+            gap: 18px;
+        }
+
+        label {
+            display: grid;
+            gap: 8px;
+            color: rgba(255, 250, 242, 0.8);
+            font-size: 22px;
+        }
+
+        input,
+        textarea {
+            width: 100%;
+            border: 1px solid rgba(255, 250, 242, 0.28);
+            border-radius: 0;
+            background: rgba(255, 250, 242, 0.08);
+            color: #ffffff;
+            padding: 15px 16px;
+            font: inherit;
+            font-size: 20px;
+            outline: none;
+        }
+
+        textarea {
+            min-height: 132px;
+            resize: vertical;
+        }
+
+        input:focus,
+        textarea:focus {
+            border-color: rgba(255, 250, 242, 0.86);
+        }
+
+        input::placeholder,
+        textarea::placeholder {
+            color: rgba(255, 250, 242, 0.42);
+        }
+
+        .form .button {
+            border-color: var(--white);
+            background: var(--white);
+            color: var(--green-deep);
+            cursor: pointer;
+        }
+
+        .form .button:hover {
+            background: transparent;
+            color: var(--white);
+        }
+
+        .form .button:disabled {
+            opacity: 0.72;
+            cursor: wait;
+            transform: none;
+        }
+
+        .form-status {
+            margin: -4px 0 0;
+            color: rgba(255, 250, 242, 0.74);
+            font-size: 16px;
+            line-height: 1.6;
+        }
+
+        .form-status.is-success {
+            color: #ffffff;
+        }
+
+        .form-status.is-error {
+            color: #ffd6c9;
+        }
+
+        .field-error {
+            min-height: 1.5em;
+            margin: -2px 0 0;
+            color: #ffd6c9;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+
+        .form label.has-error input,
+        .form label.has-error textarea {
+            border-color: #ffd6c9;
+        }
+
+        .form-honeypot {
+            position: absolute;
+            left: -10000px;
+            width: 1px;
+            height: 1px;
+            overflow: hidden;
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .site-footer {
+            padding: 52px 0;
+            background: #171512;
+            color: rgba(255, 250, 242, 0.7);
+            font-size: 14px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 1fr auto;
+            gap: 40px;
+            align-items: end;
+        }
+
+        .footer-brand {
+            display: block;
+            margin-bottom: 12px;
+            color: var(--white);
+            font-size: 18px;
+            font-weight: 700;
+        }
+
+        .footer-record {
+            display: block;
+            margin-top: 8px;
+            color: rgba(255, 250, 242, 0.46);
+        }
+
+        .footer-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 18px;
+            justify-content: flex-end;
+        }
+
+        .footer-links a:hover {
+            color: var(--white);
+        }
+
+        @media (max-width: 920px) {
+            .site-header {
+                grid-template-columns: 1fr auto;
+                min-height: auto;
+                padding: 18px 124px 18px 24px;
+            }
+
+            .nav {
+                grid-column: 1 / -1;
+                order: 3;
+                justify-content: flex-start;
+                gap: 16px;
+                overflow-x: auto;
+                padding-bottom: 2px;
+            }
+
+            .header-cta {
+                position: absolute;
+                top: 20px;
+                right: 24px;
+                justify-self: end;
+                min-height: 36px;
+                padding: 7px 13px;
+                font-size: 13px;
+                white-space: nowrap;
+            }
+
+            .hero {
+                min-height: 86vh;
+            }
+
+            .hero-inner {
+                padding-top: 190px;
+            }
+
+            .hero h1 {
+                max-width: 100%;
+                font-size: clamp(36px, 8vw, 58px);
+                line-height: 1.08;
+                overflow-wrap: anywhere;
+                word-break: break-all;
+            }
+
+            .hero-lead {
+                max-width: min(100%, 520px);
+                font-size: clamp(15px, 2.4vw, 18px);
+                overflow-wrap: anywhere;
+                word-break: break-all;
+            }
+
+            .product-hero {
+                height: clamp(340px, 37.5vw, 520px);
+            }
+
+            .product-hero h2 {
+                font-size: clamp(34px, 6vw, 58px);
+            }
+
+            .section-head,
+            .intro-grid,
+            .material-panel,
+            .about-band,
+            .contact-grid,
+            .product-block {
+                grid-template-columns: 1fr;
+                gap: 34px;
+            }
+
+            .advantage-head {
+                text-align: left;
+            }
+
+            .advantage-head h2 {
+                white-space: normal;
+            }
+
+            .contact .section-head h2 {
+                white-space: normal;
+            }
+
+            .proof-list,
+            .category-grid,
+            .advantage-grid,
+            .news-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .material-photo {
+                min-height: 360px;
+            }
+
+            .about-photo {
+                aspect-ratio: 16 / 10;
+                height: auto;
+                min-height: 0;
+            }
+        }
+
+        @media (max-width: 620px) {
+            html,
+            body {
+                font-size: 14px;
+                overflow-x: hidden;
+            }
+
+            .site-header {
+                grid-template-columns: minmax(0, 1fr) auto;
+                padding: 12px 104px 12px 18px;
+                gap: 12px;
+            }
+
+            .brand {
+                gap: 9px;
+                font-size: 18px;
+            }
+
+            .brand-logo {
+                width: 44px;
+                height: 34px;
+            }
+
+            .brand-text {
+                white-space: nowrap;
+            }
+
+            .header-cta {
+                min-height: 34px;
+                padding: 6px 9px;
+                font-size: 11px;
+                white-space: nowrap;
+                top: 14px;
+                right: 18px;
+            }
+
+            .nav {
+                gap: 18px;
+                font-size: 13px;
+            }
+
+            .advantage-head {
+                text-align: left;
+            }
+
+            .advantage-head h2 {
+                white-space: normal;
+                font-size: 36px;
+            }
+
+            .wrap,
+            .hero-inner {
+                width: min(100% - 52px, 1180px);
+            }
+
+            .hero h1 {
+                max-width: 100%;
+                font-size: 36px;
+                line-height: 1.06;
+                overflow-wrap: anywhere;
+                word-break: break-all;
+            }
+
+            .hero-lead {
+                max-width: 320px;
+                font-size: 15px;
+                overflow-wrap: anywhere;
+                word-break: break-all;
+            }
+
+            .product-hero {
+                height: 330px;
+                margin-bottom: 48px;
+            }
+
+            .product-hero h2 {
+                font-size: 30px;
+                white-space: normal;
+            }
+
+            .product-hero .muted {
+                font-size: 17px;
+            }
+
+            .section {
+                padding: 76px 0;
+            }
+
+            .proof-list,
+            .category-grid,
+            .advantage-grid,
+            .news-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .category,
+            .news-card-body,
+            .advantage,
+            .proof-item {
+                min-height: auto;
+                padding: 24px;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 28px;
+            }
+
+            .footer-links {
+                justify-content: flex-start;
+            }
+        }
+    
+
+        .article-page .site-header {
+            background: linear-gradient(180deg, rgba(29, 27, 24, 0.88), rgba(29, 27, 24, 0.62));
+        }
+
+        .article-hero {
+            padding: 178px 0 82px;
+            background: var(--paper);
+            border-bottom: 1px solid var(--line);
+        }
+
+        .article-hero-inner,
+        .article-reader {
+            width: min(920px, calc(100% - 48px));
+            margin: 0 auto;
+        }
+
+        .article-back {
+            display: inline-flex;
+            margin-bottom: 34px;
+            color: var(--green);
+            font-size: 18px;
+            font-weight: 700;
+        }
+
+        .article-hero h1 {
+            margin: 0;
+            font-family: "Noto Serif SC", serif;
+            font-size: clamp(42px, 5.4vw, 76px);
+            line-height: 1.12;
+            font-weight: 500;
+        }
+
+        .article-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px 24px;
+            margin-top: 32px;
+            color: var(--muted);
+            font-size: 18px;
+        }
+
+        .article-reader {
+            padding: 74px 0 112px;
+        }
+
+        .article-summary {
+            margin: 0 0 46px;
+            padding: 28px 32px;
+            border-left: 4px solid var(--green);
+            background: rgba(70, 89, 79, 0.08);
+            color: #3a352f;
+            font-size: 22px;
+            line-height: 1.85;
+        }
+
+        .article-content {
+            color: #34302b;
+            font-size: 21px;
+            line-height: 1.95;
+        }
+
+        .article-content h2 {
+            margin: 62px 0 22px;
+            font-family: "Noto Serif SC", serif;
+            font-size: clamp(32px, 3.6vw, 46px);
+            line-height: 1.25;
+            font-weight: 500;
+        }
+
+        .article-content h3 {
+            margin: 34px 0 10px;
+            font-size: 25px;
+            line-height: 1.55;
+        }
+
+        .article-content p {
+            margin: 0 0 22px;
+        }
+
+        .article-table-wrap {
+            overflow-x: auto;
+            margin: 34px 0 52px;
+            border: 1px solid var(--line);
+        }
+
+        .article-table {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 720px;
+            background: rgba(255, 250, 242, 0.5);
+            font-size: 18px;
+            line-height: 1.75;
+        }
+
+        .article-table th,
+        .article-table td {
+            padding: 18px 20px;
+            border-bottom: 1px solid var(--line);
+            border-right: 1px solid var(--line);
+            vertical-align: top;
+            text-align: left;
+        }
+
+        .article-table th {
+            background: rgba(70, 89, 79, 0.08);
+            color: var(--ink);
+            font-weight: 800;
+        }
+
+        .article-table tr:last-child td {
+            border-bottom: 0;
+        }
+
+        .article-table th:last-child,
+        .article-table td:last-child {
+            border-right: 0;
+        }
+
+        @media (max-width: 920px) {
+            .article-hero {
+                padding: 138px 0 54px;
+            }
+
+            .article-hero-inner,
+            .article-reader {
+                width: min(100% - 52px, 920px);
+            }
+
+            .article-hero h1 {
+                font-size: clamp(30px, 7.2vw, 42px);
+                line-height: 1.18;
+                overflow-wrap: anywhere;
+                word-break: break-all;
+            }
+
+            .article-meta {
+                gap: 12px;
+                font-size: 14px;
+            }
+
+            .article-reader {
+                padding: 54px 0 82px;
+            }
+
+            .article-content {
+                font-size: 16px;
+                line-height: 1.86;
+            }
+
+            .article-summary {
+                padding: 20px;
+                font-size: 16px;
+            }
+
+            .article-content h2 {
+                font-size: 24px;
+            }
+
+            .article-content h3 {
+                font-size: 20px;
+            }
+        }
+
+    </style>
+</head>
+<body class="article-page">
+    <header class="site-header">
+        <a class="brand" href="index.html#home" aria-label="青龙草油墨首页">
+            <!-- 图片修改位置：左上角青龙草商标，替换 src 里的图片文件。 -->
+            <img class="brand-logo" src="images/qinglongcao-mark-white.png" alt="青龙草油墨商标">
+            <span class="brand-text">青龙草油墨</span>
+        </a>
+        <nav class="nav" aria-label="主导航">
+            <a href="index.html#products">产品</a>
+            <a href="index.html#advantages">优势</a>
+            <a href="index.html#materials">应用</a>
+            <a href="index.html#news">新闻</a>
+            <a href="index.html#about">关于</a>
+            <a href="#contact">联系</a>
+        </nav>
+        <a class="header-cta" href="#contact">立即询价</a>
+    </header>
+
+    <main>
+        <section class="article-hero">
+            <div class="article-hero-inner">
+                <a class="article-back" href="index.html#news">返回新闻与文章</a>
+                <p class="kicker">技术文章</p>
+                <h1>UV塑料油墨耐酒精怎么测？化妆品瓶印刷客户要注意这几个条件</h1>
+                <div class="article-meta">
+                    <span>UV塑料油墨</span>
+                    <span>耐酒精测试</span>
+                    <span>2026-06-04</span>
+                </div>
+            </div>
+        </section>
+
+        <section class="article-reader" aria-label="文章正文">
+            <article class="article-content">
+                <p class="article-summary">UV塑料油墨耐酒精测试，不能只看“用酒精擦一下掉不掉色”。对于化妆品瓶、日化瓶、洗护瓶、消毒类包装等塑料印刷场景，测试前要明确酒精浓度、擦拭方式、擦拭次数、接触时间、测试力度、UV固化条件和判定标准。不同客户的测试方法不同，结果也可能不同。更稳妥的做法，是先用客户实际基材打样，再按客户真实使用场景确认耐酒精表现。</p>
+                    <h2 id="why-alcohol-resistance">一、为什么化妆品瓶印刷要重点看耐酒精？</h2>
+                    <p>化妆品瓶、护肤品瓶、香水瓶、洗护瓶等包装，在实际使用中可能接触酒精、香精、清洁剂、消毒液或含溶剂成分的内容物。印刷刚完成时外观看起来正常，并不代表后续灌装、运输、擦拭和使用过程中一定稳定。</p>
+                    <p>耐酒精测试的作用，不是简单证明“油墨好不好”，而是判断印刷层在客户实际使用环境下是否稳定，油墨和基材是否匹配，UV固化是否充分，以及后续批量生产是否存在掉色、发花、脱落、返工和投诉风险。</p>
+                    <p>需要注意的是，耐酒精表现不是由油墨单独决定的。基材材质、表面处理、表面清洁度、油墨适配性、墨层厚度、UV固化能量、放置时间和测试方式，都会影响最终结果。</p>
+                    <h2 id="test-conditions">二、耐酒精测试不能只说“酒精擦一下”</h2>
+                    <p>很多客户会直接问：“你们的UV塑料油墨耐不耐酒精？”这个问题不能只回答“耐”或“不耐”。因为酒精浓度不同、擦拭次数不同、擦拭力度不同、接触时间不同，测试强度会完全不一样。</p>
+                    <p>例如，75%乙醇、95%乙醇、无水乙醇和异丙醇，对印刷层的影响并不相同。手工轻擦、棉布加压摩擦、长时间浸泡，也不能看作同一种测试。</p>
+                    <p>专业判断时，必须先把测试条件写清楚。否则容易出现样板测试通过，但客户质检不过，或者销售认为能过，生产现场却不稳定的情况。</p>
+                    <div class="article-table-wrap"><table class="article-table"><thead><tr><th scope="col">测试条件</th><th scope="col">需要确认的内容</th><th scope="col">可能影响</th></tr></thead><tbody><tr><td>酒精类型和浓度</td><td>75%乙醇、95%乙醇、无水乙醇、IPA或客户实际内容物</td><td>溶剂强度不同，结果不能直接比较</td></tr><tr><td>擦拭材料</td><td>棉布、棉签、无尘布或客户指定材料</td><td>材料吸液量和摩擦力不同</td></tr><tr><td>擦拭次数</td><td>10次、30次、50次、100次等</td><td>次数越多，对印刷层考验越高</td></tr><tr><td>擦拭力度</td><td>手工轻擦、固定压力、来回摩擦</td><td>力度不同，掉色和发花风险不同</td></tr><tr><td>接触时间</td><td>快速擦拭、停留擦拭、长时间浸泡</td><td>接触时间越长，测试强度越高</td></tr><tr><td>UV固化条件</td><td>灯能量、速度、墨层厚度、照射次数</td><td>固化不足会影响耐性和附着力</td></tr><tr><td>判定标准</td><td>不掉色、不露底、不发花、不发黏、不失光</td><td>标准不同，结论不同</td></tr></tbody></table></div>
+                    <h2 id="testing-method">三、建议客户如何做耐酒精测试？</h2>
+                    <p>第一，先确认测试目的。客户要先明确到底是验证印刷文字会不会掉色，还是验证图案会不会发花，或者验证酒精擦拭后附着力是否下降。不同目的对应的测试强度不同。</p>
+                    <p>第二，确认酒精类型和浓度。普通消毒场景常见75%乙醇，但有些客户会使用95%乙醇、无水乙醇或异丙醇测试。不能把“通过75%酒精擦拭”直接等同于“所有酒精和溶剂都没有问题”。</p>
+                    <p>第三，统一擦拭材料和擦拭方式。今天用纸巾、明天用无尘布，今天轻擦、明天用力摩擦，测试结果没有可比性。建议记录擦拭材料、次数、力度、方向和观察时间。</p>
+                    <p>第四，确认UV固化是否充分。UV油墨表面干了，不代表膜层内部完全固化。白墨、深色墨、大面积实地图案和厚墨层位置，更容易受到固化能量影响。</p>
+                    <p>第五，测试后不要只看是否掉色，还要观察是否发花、失光、发黏、起皱、边缘翘起、局部露底或附着力下降。</p>
+                    <h2 id="sample-records">四、客户寄样测试时建议记录哪些信息？</h2>
+                    <div class="article-table-wrap"><table class="article-table"><thead><tr><th scope="col">项目</th><th scope="col">建议记录内容</th></tr></thead><tbody><tr><td>基材信息</td><td>PP、PE、PET、ABS、PC、亚克力或客户实际材料说明</td></tr><tr><td>表面处理</td><td>是否电晕、火焰、等离子或其他处理，处理后放置时间</td></tr><tr><td>印刷位置</td><td>瓶身、瓶盖、弧面、平面、透明件或异形件</td></tr><tr><td>印刷内容</td><td>文字、线条、LOGO、实地图案、大面积色块</td></tr><tr><td>油墨颜色</td><td>白色、黑色、彩色、专色、透明光油等</td></tr><tr><td>测试液体</td><td>75%乙醇、95%乙醇、IPA或客户实际内容物</td></tr><tr><td>测试方法</td><td>擦拭材料、擦拭次数、擦拭力度和观察时间</td></tr><tr><td>判定标准</td><td>不掉色、不露底、不发花、不发黏、不失光</td></tr><tr><td>批量要求</td><td>是否需要耐水煮、耐摩擦、胶带测试或内容物接触测试</td></tr></tbody></table></div>
+                    <h2 id="common-causes">五、耐酒精不过关，通常有哪些原因？</h2>
+                    <h3>1. 油墨与实际基材不匹配</h3>
+                    <p>塑料不是单一材料。即使都叫PET、PP或PE，不同厂家、不同批次、不同添加剂和不同表面处理状态，也会影响油墨附着和耐酒精表现。只凭材料名称选油墨，容易误判。</p>
+                    <h3>2. 基材表面处理不足</h3>
+                    <p>PP、PE等低表面能材料，如果没有经过合适的表面处理，油墨可能只是停留在表面，短时间看似印上了，但酒精擦拭、胶带拉扯或指甲刮擦后容易出现问题。</p>
+                    <h3>3. 表面有油污、脱模剂或灰尘</h3>
+                    <p>很多塑料瓶表面看起来干净，但可能残留脱模剂、油污、灰尘或助剂析出物。这些因素会阻碍油墨和基材结合，导致局部掉色或耐酒精不稳定。</p>
+                    <h3>4. UV固化不充分</h3>
+                    <p>UV固化不足时，印刷层内部交联不充分，耐酒精、耐摩擦和附着稳定性都可能下降。尤其是白墨、深色墨和厚墨层，更要关注固化能量和速度。</p>
+                    <h3>5. 测试强度超过实际应用场景</h3>
+                    <p>有些客户会用高浓度酒精、长时间浸泡或强力反复摩擦测试。如果客户确实有高强度测试要求，应提前说明，不能在样板完成后临时提高标准。</p>
+                    <h3>6. 样板和批量条件不一致</h3>
+                    <p>样板通过后，批量生产如果换了基材批次、改变了印刷速度、提高了墨层厚度或UV灯能量下降，都可能影响最终结果。</p>
+                    <h2 id="adhesion-test">六、耐酒精测试后还要不要做附着力测试？</h2>
+                    <p>建议要做。耐酒精测试主要观察印刷层对酒精或溶剂擦拭的耐受情况，但它不能完全替代附着力测试。</p>
+                    <p>对于塑料瓶、化妆品瓶和日化瓶印刷，更稳妥的测试组合是：酒精擦拭测试、3M胶带拉扯测试、指甲刮擦测试，必要时再增加耐水、耐水煮、耐摩擦或内容物接触测试。</p>
+                    <p>如果客户只做酒精测试，不做胶带拉扯和刮擦测试，可能无法充分判断油墨和基材之间的结合稳定性。</p>
+                    <h2 id="solution">七、我们的解决思路</h2>
+                    <p>对于化妆品瓶、日化瓶、洗护瓶和消毒类包装客户，我们不建议只凭一句“要耐酒精”就直接推荐油墨。更稳妥的流程，是先用客户实际基材做适配性测试。</p>
+                    <p>客户可以寄实际瓶子或塑料件，同时说明材质、表面处理、印刷颜色、图案面积、测试酒精浓度、擦拭次数和判定标准。我们根据这些信息进行油墨适配和打样，再提供样板给客户确认。</p>
+                    <p>样板确认后，再建议客户按照相同的基材、印刷条件、UV固化条件和测试标准批量使用。这样可以减少后期掉色、发花、返工和投诉风险。</p>
+                    <h2 id="faq">八、客户常见问题与解决建议</h2>
+                    <h3>1. 客户问：你们的UV塑料油墨耐75%酒精吗？</h3>
+                    <p>可以根据您的实际基材做测试。75%酒精是常见测试条件，但还要确认擦拭次数、擦拭力度、擦拭材料和判定标准。建议寄实际瓶子过来，我们按您的要求打样，再看是否掉色、发花、失光或脱落。</p>
+                    <h3>2. 客户问：化妆品瓶要用酒精擦拭，印刷会不会掉？</h3>
+                    <p>要看瓶子材质、表面处理、油墨适配和UV固化条件。PET、PP、PE等材料表现不同，不能只凭“化妆品瓶”判断。建议用实际瓶子做耐酒精、胶带拉扯和指甲刮擦测试。</p>
+                    <h3>3. 客户问：酒精擦了以后图案发花，是油墨问题吗？</h3>
+                    <p>有可能和油墨有关，也可能和固化不足、墨层过厚、基材表面状态或测试强度有关。需要先确认酒精浓度、擦拭次数、擦拭力度和印刷后放置时间。</p>
+                    <h3>4. 客户问：样板耐酒精可以，批量时为什么不稳定？</h3>
+                    <p>常见原因是批量条件和样板条件不一致，例如基材批次变化、表面处理不足、UV灯能量下降、印刷速度变快、墨层变厚或测试方式改变。</p>
+                    <h3>5. 客户问：只做耐酒精测试，不做胶带测试可以吗？</h3>
+                    <p>不建议。耐酒精测试和胶带测试关注点不同。酒精擦拭主要看耐溶剂表现，胶带测试更偏向判断印刷层和基材的结合稳定性。</p>
+                    <h3>6. 客户问：95%酒精反复擦很多次，也能做到吗？</h3>
+                    <p>可以先按您的标准做样板测试，但要提前明确测试条件。95%酒精和75%酒精测试强度不同，擦拭次数越多、力度越大，对印刷层要求越高，不建议没有测试就直接承诺批量效果。</p>
+                    <h2 id="summary">九、总结</h2>
+                    <p>UV塑料油墨耐酒精测试，关键不是简单问“耐不耐”，而是要把测试条件说清楚。对于化妆品瓶、日化瓶、洗护瓶和消毒类包装客户，应重点确认酒精浓度、擦拭次数、擦拭力度、固化条件、基材表面状态和判定标准。</p>
+                    <p>更稳妥的流程是：客户寄实际基材，明确测试要求，做油墨适配和打样，再通过酒精擦拭、胶带拉扯、指甲刮擦等方式综合确认，样板通过后再批量使用。这样比单纯听口头承诺更可靠，也能帮助客户减少返工和批量风险。</p>
+            </article>
+        </section>
+
+        <section id="contact" class="section contact">
+            <div class="wrap">
+                <div class="section-head">
+                    <p class="kicker">联系咨询</p>
+                    <div>
+                        <h2>把底材、工艺和需求给我们，我们帮您判断适合哪一套油墨。</h2>
+                        <p class="muted">承接批量采购、经销商合作、配方定制，24 小时快速响应。</p>
+                    </div>
+                </div>
+                <div class="contact-grid">
+                    <div class="contact-lines">
+                        <div class="contact-line">
+                            <strong>咨询热线</strong>
+                                <span>13703018654 彭小姐&nbsp;&nbsp;18928545891 黄经理</span>
+                        </div>
+                        <div class="contact-line">
+                            <strong>地址</strong>
+                            <span>佛山市顺德区伦教街道霞石工业区</span>
+                        </div>
+                        <div class="contact-line">
+                            <strong>服务范围</strong>
+                            <span>UV丝印油墨、UV胶印油墨、经销商合作、定制配方、上门技术指导</span>
+                        </div>
+                    </div>
+                    <form class="form" action="https://api.web3forms.com/submit" method="POST" novalidate>
+                        <input type="hidden" name="subject" value="卡林托官网询盘">
+                        <input type="hidden" name="from_name" value="卡林托官网">
+                        <input type="hidden" name="source_url" value="">
+                        <input type="hidden" name="referer" value="">
+                        <input type="hidden" name="utm_params" value="">
+                        <input type="hidden" name="submit_time" value="">
+                        <div class="form-honeypot" aria-hidden="true">
+                            <label>
+                                网站地址
+                                <input type="text" name="website_url" tabindex="-1" autocomplete="off">
+                            </label>
+                        </div>
+                        <label>
+                            公司 / 姓名
+                            <input type="text" name="name" placeholder="请输入您的称呼" required minlength="2" maxlength="50" aria-describedby="name-error" aria-invalid="false">
+                            <span class="field-error" id="name-error" aria-live="polite"></span>
+                        </label>
+                        <label>
+                            电话 / 微信
+                            <input type="text" name="contact" placeholder="请输入联系方式" required minlength="5" maxlength="30" aria-describedby="contact-error" aria-invalid="false">
+                            <span class="field-error" id="contact-error" aria-live="polite"></span>
+                        </label>
+                        <label>
+                            咨询需求
+                            <textarea name="message" maxlength="500" placeholder="例如：PET材料，LED固化，要求耐酒精擦拭。" aria-describedby="message-error" aria-invalid="false"></textarea>
+                            <span class="field-error" id="message-error" aria-live="polite"></span>
+                        </label>
+                        <button class="button" type="submit">提交询价</button>
+                        <p class="form-status" aria-live="polite"></p>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="wrap footer-grid">
+            <div>
+                <span class="footer-brand">卡林托油墨</span>
+                <span>© 2026 佛山市顺德区卡林托油墨厂 版权所有。</span>
+                <a class="footer-record" href="https://beian.miit.gov.cn/" target="_blank" rel="noopener noreferrer">粤ICP备2026075192号</a>
+            </div>
+            <nav class="footer-links" aria-label="页脚导航">
+                <a href="index.html#home">首页</a>
+                <a href="index.html#products">产品</a>
+                <a href="index.html#advantages">优势</a>
+                <a href="index.html#materials">应用</a>
+                <a href="index.html#news">新闻</a>
+                <a href="index.html#about">关于</a>
+                <a href="#contact">联系</a>
+            </nav>
+        </div>
+    </footer>
+    <script>
+        (() => {
+            const forms = Array.from(document.querySelectorAll('form[action="https://api.web3forms.com/submit"]'));
+
+            forms.forEach((form) => {
+                const button = form.querySelector('button[type="submit"]');
+                const status = form.querySelector(".form-status");
+                const defaultButtonText = button?.textContent || "提交询价";
+                const nameField = form.elements.namedItem("name");
+                const contactField = form.elements.namedItem("contact");
+                const messageField = form.elements.namedItem("message");
+                const honeypotField = form.elements.namedItem("website_url");
+
+                const setButtonLoading = (loading) => {
+                    if (!button) {
+                        return;
+                    }
+
+                    button.disabled = loading;
+                    button.textContent = loading ? "提交中，请稍候..." : defaultButtonText;
+                };
+
+                const clearErrors = () => {
+                    form.querySelectorAll(".field-error").forEach((error) => {
+                        error.textContent = "";
+                    });
+                    form.querySelectorAll("label.has-error").forEach((label) => {
+                        label.classList.remove("has-error");
+                    });
+                    form.querySelectorAll('[aria-invalid="true"]').forEach((field) => {
+                        field.setAttribute("aria-invalid", "false");
+                    });
+                };
+
+                const showFieldError = (field, message) => {
+                    if (!field) {
+                        return;
+                    }
+
+                    field.setAttribute("aria-invalid", "true");
+                    field.closest("label")?.classList.add("has-error");
+                    const errorId = field.getAttribute("aria-describedby");
+                    const error = errorId ? form.querySelector(`#${errorId}`) : null;
+                    if (error) {
+                        error.textContent = message;
+                    }
+                };
+
+                const populateMetadata = () => {
+                    const sourceUrl = form.elements.namedItem("source_url");
+                    const referer = form.elements.namedItem("referer");
+                    const utmParams = form.elements.namedItem("utm_params");
+                    const submitTime = form.elements.namedItem("submit_time");
+                    const url = new URL(window.location.href);
+                    const trackedUtm = new URLSearchParams();
+
+                    ["utm_source", "utm_medium", "utm_campaign", "utm_content", "utm_term"].forEach((key) => {
+                        const value = url.searchParams.get(key);
+                        if (value) {
+                            trackedUtm.set(key, value);
+                        }
+                    });
+
+                    if (sourceUrl) {
+                        sourceUrl.value = window.location.href;
+                    }
+                    if (referer) {
+                        referer.value = document.referrer || "";
+                    }
+                    if (utmParams) {
+                        utmParams.value = trackedUtm.toString();
+                    }
+                    if (submitTime) {
+                        submitTime.value = new Date().toISOString();
+                    }
+                };
+
+                const validateForm = () => {
+                    clearErrors();
+                    let firstInvalidField = null;
+                    const nameValue = nameField?.value.trim() || "";
+                    const contactValue = contactField?.value.trim() || "";
+                    const messageValue = messageField?.value.trim() || "";
+
+                    if (nameField) {
+                        nameField.value = nameValue;
+                    }
+                    if (contactField) {
+                        contactField.value = contactValue;
+                    }
+                    if (messageField) {
+                        messageField.value = messageValue;
+                    }
+
+                    if (nameValue.length < 2 || nameValue.length > 50) {
+                        showFieldError(nameField, "请填写您的姓名或公司名称。");
+                        firstInvalidField ||= nameField;
+                    }
+
+                    const looksLikeMainlandMobile = /^1\d{10}$/.test(contactValue);
+                    const validMainlandMobile = /^1[3-9]\d{9}$/.test(contactValue);
+                    if (
+                        contactValue.length < 5 ||
+                        contactValue.length > 30 ||
+                        (looksLikeMainlandMobile && !validMainlandMobile)
+                    ) {
+                        showFieldError(contactField, "请填写有效的电话或微信，方便我们联系您。");
+                        firstInvalidField ||= contactField;
+                    }
+
+                    if (messageValue.length > 500) {
+                        showFieldError(messageField, "咨询需求最多填写 500 个字符。");
+                        firstInvalidField ||= messageField;
+                    }
+
+                    firstInvalidField?.focus();
+                    return !firstInvalidField;
+                };
+
+                populateMetadata();
+
+                form.addEventListener("submit", async (event) => {
+                    event.preventDefault();
+
+                    if (!button || !status) {
+                        return;
+                    }
+
+                    setButtonLoading(false);
+                    status.textContent = "";
+                    status.className = "form-status";
+
+                    if (honeypotField?.value.trim()) {
+                        status.textContent = "提交失败，请稍后重试，或直接电话联系 13703018654。";
+                        status.classList.add("is-error");
+                        return;
+                    }
+
+                    if (!validateForm()) {
+                        setButtonLoading(false);
+                        return;
+                    }
+
+                    populateMetadata();
+                    setButtonLoading(true);
+
+                    try {
+                        const response = await fetch(form.action, {
+                            method: "POST",
+                            body: new FormData(form),
+                            headers: {
+                                Accept: "application/json"
+                            }
+                        });
+                        const result = await response.json().catch(() => null);
+
+                        if (response.ok && result?.success) {
+                            status.textContent = "提交成功！我们已收到您的咨询需求，将尽快联系您。";
+                            status.classList.add("is-success");
+                            form.reset();
+                            clearErrors();
+                            populateMetadata();
+                        } else {
+                            status.textContent = "提交失败，请稍后重试，或直接电话联系 13703018654。";
+                            status.classList.add("is-error");
+                        }
+                    } catch (error) {
+                        status.textContent = "提交失败，请稍后重试，或直接电话联系 13703018654。";
+                        status.classList.add("is-error");
+                    } finally {
+                        setButtonLoading(false);
+                    }
+                });
+            });
+        })();
+    </script>
+</body>
+</html>

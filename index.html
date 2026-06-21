@@ -1,11 +1,12 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>卡林托油墨 | UV丝印与胶印油墨解决方案</title>
-    <meta name="description" content="佛山卡林托油墨，17年专注UV丝印、UV胶印油墨研发生产，为塑料、包装、标签、金属与玻璃印刷提供稳定环保的油墨解决方案。">
+    <meta name="description" content="佛山市顺德区卡林托油墨厂主营UV丝印油墨、UV胶印油墨，为塑料、包装、标签、金属与玻璃印刷提供稳定可靠的油墨解决方案。">
     <meta name="keywords" content="卡林托油墨,UV丝印油墨,UV胶印油墨,塑料印刷油墨,环保UV油墨,佛山油墨厂家">
+    <link rel="icon" href="favicon.ico" sizes="any">
     <style>
         :root {
             --paper: #f7f3ec;
@@ -19,6 +20,30 @@
             --white: #fffaf2;
         }
 
+        @font-face {
+            font-family: "Inter";
+            src: url("fonts/Inter-Variable.ttf") format("truetype");
+            font-weight: 100 900;
+            font-style: normal;
+            font-display: swap;
+        }
+
+        @font-face {
+            font-family: "Noto Sans SC";
+            src: url("fonts/NotoSansSC-Variable.ttf") format("truetype");
+            font-weight: 100 900;
+            font-style: normal;
+            font-display: swap;
+        }
+
+        @font-face {
+            font-family: "Noto Serif SC";
+            src: url("fonts/NotoSerifSC-Variable.ttf") format("truetype");
+            font-weight: 100 900;
+            font-style: normal;
+            font-display: swap;
+        }
+
         * {
             box-sizing: border-box;
         }
@@ -27,12 +52,12 @@
             scroll-behavior: smooth;
         }
 
-        /* 字体修改位置：全站正文字体改这里；想换中文字体，把 "Microsoft YaHei" 换成你的字体名。 */
+        /* 字体修改位置：全站正文字体改这里；当前字体均使用 OFL 免费商用字体。 */
         body {
             margin: 0;
             background: var(--paper);
             color: var(--ink);
-            font-family: "Inter", "Helvetica Neue", Arial, "PingFang SC", "Microsoft YaHei", sans-serif;
+            font-family: "Inter", "Noto Sans SC", sans-serif;
             font-size: 16px;
             line-height: 1.7;
             letter-spacing: 0;
@@ -127,21 +152,69 @@
             background: var(--ink);
         }
 
-        /* 图片修改位置：首屏主图，替换 images/hero-main.png 这个文件或改下面 url(...)。 */
+        .hero-slider {
+            position: absolute;
+            inset: 0;
+            transform: scale(1.02);
+            transform-origin: center;
+        }
+
+        /* 图片修改位置：首屏轮播图，在首页 HTML 的 .hero-slide 里修改/增删图片。 */
+        .hero-slide {
+            position: absolute;
+            inset: 0;
+            background-size: cover;
+            background-position: center;
+            opacity: 0;
+            transition: opacity 1200ms ease;
+        }
+
+        .hero-slide.is-active {
+            opacity: 1;
+        }
+
+        .hero-control {
+            position: absolute;
+            top: 50%;
+            z-index: 3;
+            width: 48px;
+            height: 48px;
+            border: 1px solid rgba(255, 250, 242, 0.44);
+            background: rgba(24, 23, 20, 0.26);
+            color: var(--white);
+            font-size: 34px;
+            line-height: 1;
+            cursor: pointer;
+            transform: translateY(-50%);
+            transition: background 180ms ease, border-color 180ms ease, transform 180ms ease;
+        }
+
+        .hero-control:hover {
+            background: rgba(24, 23, 20, 0.48);
+            border-color: rgba(255, 250, 242, 0.78);
+            transform: translateY(-50%) scale(1.04);
+        }
+
+        .hero-control.prev {
+            left: 30px;
+        }
+
+        .hero-control.next {
+            right: 30px;
+        }
+
         .hero::before {
             content: "";
             position: absolute;
             inset: 0;
-            background-image:
-                linear-gradient(90deg, rgba(24, 23, 20, 0.84) 0%, rgba(24, 23, 20, 0.46) 48%, rgba(24, 23, 20, 0.1) 100%),
-                url("images/hero-main.png");
-            background-size: cover;
-            background-position: center;
-            transform: scale(1.02);
+            z-index: 1;
+            background: linear-gradient(90deg, rgba(24, 23, 20, 0.84) 0%, rgba(24, 23, 20, 0.46) 48%, rgba(24, 23, 20, 0.1) 100%);
+            pointer-events: none;
         }
 
         .hero-inner {
             position: relative;
+            z-index: 2;
             width: min(1180px, calc(100% - 48px));
             margin: 0 auto;
             padding: 160px 0 92px;
@@ -161,7 +234,7 @@
         .hero h1 {
             max-width: 760px;
             margin: 0;
-            font-family: Georgia, "Times New Roman", "Songti SC", serif;
+            font-family: "Noto Serif SC", serif;
             font-size: clamp(48px, 7vw, 102px);
             font-weight: 400;
             line-height: 0.98;
@@ -254,7 +327,7 @@
             margin-bottom: 64px;
         }
 
-        /* 图片修改位置：产品体系橙色刷痕背景，替换 images/orange-brush-ink-bg.png。 */
+        /* 图片修改位置：产品体系橙色刷痕背景，替换 images/orange-brush-ink-bg-top-paper.png。 */
         .product-hero {
             position: relative;
             height: clamp(360px, 37.5vw, 720px);
@@ -264,7 +337,7 @@
             overflow: hidden;
             margin: 0 0 72px;
             color: #ffffff;
-            background: #ffffff url("images/orange-brush-ink-bg.png") center / 100% 100% no-repeat;
+            background: var(--paper-deep) url("images/orange-brush-ink-bg-top-paper.png") center / 100% 100% no-repeat;
         }
 
         .product-hero::before,
@@ -295,7 +368,7 @@
         .product-hero h2 {
             margin-top: 18px;
             color: #ffffff;
-            font-family: "Inter", "Helvetica Neue", Arial, "PingFang SC", "Microsoft YaHei", sans-serif;
+            font-family: "Inter", "Noto Sans SC", sans-serif;
             font-size: clamp(44px, 5vw, 72px);
             font-weight: 800;
             line-height: 1.08;
@@ -321,7 +394,7 @@
         /* 字体修改位置：各栏目大标题字体改这里。 */
         h2 {
             margin: 0;
-            font-family: Georgia, "Times New Roman", "Songti SC", serif;
+            font-family: "Noto Serif SC", serif;
             font-size: clamp(34px, 4.8vw, 64px);
             font-weight: 400;
             line-height: 1.08;
@@ -330,7 +403,7 @@
 
         h3 {
             margin: 0;
-            font-family: Georgia, "Times New Roman", "Songti SC", serif;
+            font-family: "Noto Serif SC", serif;
             font-size: 28px;
             font-weight: 400;
             line-height: 1.2;
@@ -398,7 +471,7 @@
         .proof-number {
             display: block;
             margin-bottom: 16px;
-            font-family: Georgia, "Times New Roman", serif;
+            font-family: "Noto Serif SC", serif;
             font-size: 40px;
             line-height: 1;
         }
@@ -571,12 +644,12 @@
             align-items: stretch;
         }
 
-        /* 图片修改位置：应用场景右侧背景图，替换下面 url(...) 里的图片地址。 */
+        /* 图片修改位置：应用场景左侧背景图，替换下面 url(...) 里的图片地址。 */
         .material-photo {
             min-height: 520px;
             background-image:
                 linear-gradient(180deg, rgba(29, 27, 24, 0.05), rgba(29, 27, 24, 0.28)),
-                url("images/application-screen-printing-unsplash.jpg");
+                url("images/application-screen-printing-orange-reference-01.png");
             background-size: cover;
             background-position: center;
         }
@@ -619,46 +692,100 @@
 
         .news-grid {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 1px;
-            background: var(--line);
-            border: 1px solid var(--line);
+            grid-template-columns: repeat(3, minmax(0, 340px));
+            justify-content: center;
+            gap: 24px;
+            background: transparent;
+            border: 0;
         }
 
         .news-card {
-            display: grid;
-            grid-template-rows: auto 1fr;
-            background: var(--paper);
-            min-height: 100%;
+            position: relative;
+            display: block;
+            min-height: 430px;
+            overflow: hidden;
+            color: var(--white);
+            background: var(--green-deep);
+            border-radius: 8px;
+            transition: transform 180ms ease, box-shadow 180ms ease;
+        }
+
+        .news-card::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, rgba(29, 27, 24, 0.02) 0%, rgba(29, 27, 24, 0.34) 44%, rgba(29, 27, 24, 0.86) 100%);
+            pointer-events: none;
         }
 
         .news-card img {
+            position: absolute;
+            inset: 0;
             width: 100%;
-            aspect-ratio: 4 / 3;
+            height: 100%;
             object-fit: cover;
-            background: #d0c4b4;
+            transition: transform 260ms ease;
         }
 
         .news-card-body {
+            position: absolute;
+            inset: auto 0 0;
+            z-index: 1;
             display: flex;
             flex-direction: column;
-            gap: 16px;
-            padding: 28px;
+            gap: 14px;
+            padding: 30px;
         }
 
         .news-date {
-            color: var(--green);
-            font-size: 13px;
+            color: rgba(255, 250, 242, 0.84);
+            font-size: 15px;
             font-weight: 700;
         }
 
         .news-card h3 {
-            font-size: 27px;
+            color: #ffffff;
+            font-size: 25px;
+            line-height: 1.35;
         }
 
         .news-card p {
             margin: 0;
-            color: var(--muted);
+            color: rgba(255, 250, 242, 0.82);
+            font-size: 17px;
+            line-height: 1.65;
+        }
+
+        .news-link {
+            margin-top: 8px;
+            color: #ffffff;
+            font-size: 16px;
+            font-weight: 800;
+        }
+
+        .news-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 18px 40px rgba(31, 26, 20, 0.12);
+        }
+
+        .news-card:hover img {
+            transform: scale(1.045);
+        }
+
+        .news-card.empty {
+            background: rgba(255, 250, 242, 0.42);
+            border: 1px solid var(--line);
+            box-shadow: none;
+            cursor: default;
+        }
+
+        .news-card.empty::after {
+            display: none;
+        }
+
+        .news-card.empty:hover {
+            transform: none;
+            box-shadow: none;
         }
 
         .about-band {
@@ -811,6 +938,50 @@
             color: var(--white);
         }
 
+        .form .button:disabled {
+            opacity: 0.72;
+            cursor: wait;
+            transform: none;
+        }
+
+        .form-status {
+            margin: -4px 0 0;
+            color: rgba(255, 250, 242, 0.74);
+            font-size: 16px;
+            line-height: 1.6;
+        }
+
+        .form-status.is-success {
+            color: #ffffff;
+        }
+
+        .form-status.is-error {
+            color: #ffd6c9;
+        }
+
+        .field-error {
+            min-height: 1.5em;
+            margin: -2px 0 0;
+            color: #ffd6c9;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+
+        .form label.has-error input,
+        .form label.has-error textarea {
+            border-color: #ffd6c9;
+        }
+
+        .form-honeypot {
+            position: absolute;
+            left: -10000px;
+            width: 1px;
+            height: 1px;
+            overflow: hidden;
+            opacity: 0;
+            pointer-events: none;
+        }
+
         .site-footer {
             padding: 52px 0;
             background: #171512;
@@ -833,6 +1004,12 @@
             font-weight: 700;
         }
 
+        .footer-record {
+            display: block;
+            margin-top: 8px;
+            color: rgba(255, 250, 242, 0.46);
+        }
+
         .footer-links {
             display: flex;
             flex-wrap: wrap;
@@ -848,7 +1025,7 @@
             .site-header {
                 grid-template-columns: 1fr auto;
                 min-height: auto;
-                padding: 18px 24px;
+                padding: 18px 124px 18px 24px;
             }
 
             .nav {
@@ -861,7 +1038,14 @@
             }
 
             .header-cta {
+                position: absolute;
+                top: 20px;
+                right: 24px;
                 justify-self: end;
+                min-height: 36px;
+                padding: 7px 13px;
+                font-size: 13px;
+                white-space: nowrap;
             }
 
             .hero {
@@ -870,6 +1054,21 @@
 
             .hero-inner {
                 padding-top: 190px;
+            }
+
+            .hero h1 {
+                max-width: 100%;
+                font-size: clamp(36px, 8vw, 58px);
+                line-height: 1.08;
+                overflow-wrap: anywhere;
+                word-break: break-all;
+            }
+
+            .hero-lead {
+                max-width: min(100%, 520px);
+                font-size: clamp(15px, 2.4vw, 18px);
+                overflow-wrap: anywhere;
+                word-break: break-all;
             }
 
             .product-hero {
@@ -920,26 +1119,50 @@
             }
         }
 
+        @media (prefers-reduced-motion: reduce) {
+            .hero-slide {
+                transition: none;
+            }
+        }
+
         @media (max-width: 620px) {
+            html,
+            body {
+                font-size: 14px;
+                overflow-x: hidden;
+            }
+
             .site-header {
-                padding: 14px 18px;
+                grid-template-columns: minmax(0, 1fr) auto;
+                padding: 12px 104px 12px 18px;
+                gap: 12px;
             }
 
             .brand {
-                gap: 10px;
-                font-size: 20px;
+                gap: 9px;
+                font-size: 18px;
+            }
+
+            .brand-text {
+                white-space: nowrap;
             }
 
             .brand-logo {
-                width: 50px;
-                height: 38px;
+                width: 44px;
+                height: 34px;
             }
 
             .header-cta {
-                padding: 8px 12px;
+                min-height: 34px;
+                padding: 6px 9px;
+                font-size: 11px;
+                white-space: nowrap;
+                top: 14px;
+                right: 18px;
             }
 
             .nav {
+                gap: 18px;
                 font-size: 13px;
             }
 
@@ -949,45 +1172,117 @@
 
             .advantage-head h2 {
                 white-space: normal;
-                font-size: 36px;
+                font-size: 28px;
             }
 
             .wrap,
             .hero-inner {
-                width: min(100% - 32px, 1180px);
+                width: min(100% - 52px, 1180px);
+            }
+
+            .hero {
+                min-height: 680px;
+            }
+
+            .hero-inner {
+                padding-top: 168px;
+                padding-bottom: 76px;
             }
 
             .hero h1 {
-                font-size: 50px;
+                max-width: 100%;
+                font-size: 36px;
+                line-height: 1.06;
+                overflow-wrap: anywhere;
+                word-break: break-all;
             }
 
             .hero-lead {
-                font-size: 18px;
+                max-width: 320px;
+                font-size: 15px;
+                overflow-wrap: anywhere;
+                word-break: break-all;
+            }
+
+            .hero-actions .button {
+                min-height: 44px;
+                padding: 10px 20px;
+                font-size: 14px;
+            }
+
+            .hero-control {
+                width: 34px;
+                height: 34px;
+                font-size: 24px;
+            }
+
+            .hero-control.prev {
+                left: 10px;
+            }
+
+            .hero-control.next {
+                right: 10px;
             }
 
             .product-hero {
-                height: 330px;
-                margin-bottom: 48px;
+                height: 290px;
+                margin-bottom: 42px;
             }
 
             .product-hero h2 {
-                font-size: 30px;
+                font-size: 24px;
                 white-space: normal;
             }
 
+            .product-hero .kicker {
+                font-size: 14px;
+            }
+
             .product-hero .muted {
-                font-size: 17px;
+                margin-top: 18px;
+                font-size: 14px;
             }
 
             .section {
-                padding: 76px 0;
+                padding: 54px 0;
+            }
+
+            .section-head,
+            .intro-grid,
+            .material-panel,
+            .about-band,
+            .contact-grid,
+            .product-block {
+                gap: 26px;
+            }
+
+            h2,
+            .section-head h2 {
+                font-size: 30px;
+            }
+
+            h3 {
+                font-size: 24px;
+            }
+
+            .kicker,
+            .intro-copy .kicker,
+            .material-copy .kicker,
+            .about-copy .kicker,
+            .contact .kicker {
+                font-size: 15px;
+            }
+
+            .large-copy {
+                font-size: 16px;
+                line-height: 1.65;
             }
 
             .proof-list,
             .category-grid,
             .advantage-grid,
             .news-grid {
-                grid-template-columns: 1fr;
+                grid-template-columns: repeat(2, minmax(0, 1fr));
             }
 
             .category,
@@ -995,7 +1290,109 @@
             .advantage,
             .proof-item {
                 min-height: auto;
-                padding: 24px;
+                padding: 22px;
+            }
+
+            .proof-number {
+                margin-bottom: 12px;
+                font-size: 32px;
+            }
+
+            .proof-item p {
+                font-size: 17px;
+                line-height: 1.6;
+            }
+
+            .category {
+                min-height: 220px;
+            }
+
+            .category strong {
+                font-size: 19px;
+            }
+
+            .category p {
+                font-size: 16px;
+                line-height: 1.65;
+            }
+
+            .swatch-row {
+                margin-top: 26px;
+            }
+
+            .swatch {
+                width: 19px;
+                height: 19px;
+            }
+
+            .product-title h3 {
+                font-size: 24px;
+            }
+
+            .product-title small {
+                font-size: 16px;
+            }
+
+            .series-thumb {
+                width: min(180px, 72%);
+                margin-top: 24px;
+            }
+
+            table {
+                min-width: 0;
+            }
+
+            th,
+            td {
+                padding: 12px 10px;
+                font-size: 15px;
+                line-height: 1.7;
+            }
+
+            th {
+                width: 24%;
+            }
+
+            .material-list strong {
+                font-size: 18px;
+            }
+
+            .material-list span,
+            .about-copy p:not(.kicker) {
+                font-size: 16px;
+                line-height: 1.75;
+            }
+
+            .contact .section-head {
+                margin-bottom: 38px;
+            }
+
+            .contact .section-head h2 {
+                font-size: 28px;
+                line-height: 1.25;
+            }
+
+            .contact .muted {
+                font-size: 18px;
+            }
+
+            .contact-line strong {
+                font-size: 19px;
+            }
+
+            .contact-line span,
+            label {
+                font-size: 17px;
+            }
+
+            input,
+            textarea {
+                padding: 12px 14px;
+                font-size: 16px;
+            }
+
+            textarea {
+                min-height: 112px;
             }
 
             .footer-grid {
@@ -1006,15 +1403,193 @@
             .footer-links {
                 justify-content: flex-start;
             }
+
+            /* Mobile compact draft */
+            .site-header {
+                padding: 10px 96px 10px 14px;
+                gap: 8px;
+            }
+
+            .brand {
+                gap: 7px;
+                font-size: 15px;
+            }
+
+            .brand-logo {
+                width: 38px;
+                height: 29px;
+            }
+
+            .header-cta {
+                top: 11px;
+                right: 14px;
+                min-height: 30px;
+                padding: 5px 8px;
+                font-size: 10px;
+            }
+
+            .nav {
+                gap: 12px;
+                font-size: 12px;
+            }
+
+            .wrap,
+            .hero-inner {
+                width: min(100% - 28px, 1180px);
+            }
+
+            .hero {
+                min-height: 560px;
+            }
+
+            .hero-inner {
+                padding-top: 140px;
+                padding-bottom: 60px;
+            }
+
+            .hero h1 {
+                font-size: 28px;
+            }
+
+            .hero-lead {
+                font-size: 13px;
+            }
+
+            .hero-actions .button {
+                min-height: 38px;
+                padding: 8px 14px;
+                font-size: 12px;
+            }
+
+            .section {
+                padding: 36px 0;
+            }
+
+            h2,
+            .section-head h2 {
+                font-size: 20px;
+            }
+
+            h3 {
+                font-size: 17px;
+            }
+
+            .kicker,
+            .intro-copy .kicker,
+            .material-copy .kicker,
+            .about-copy .kicker,
+            .contact .kicker {
+                font-size: 11px;
+            }
+
+            .large-copy {
+                font-size: 12px;
+                line-height: 1.6;
+            }
+
+            .proof-list,
+            .category-grid,
+            .advantage-grid,
+            .news-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+
+            .category,
+            .news-card-body,
+            .advantage,
+            .proof-item {
+                min-height: 0;
+                padding: 12px;
+            }
+
+            .category {
+                min-height: 150px;
+            }
+
+            .category strong {
+                font-size: 14px;
+            }
+
+            .category p,
+            .proof-item p {
+                font-size: 11px;
+                line-height: 1.55;
+            }
+
+            .proof-number {
+                font-size: 24px;
+            }
+
+            .advantage h3 {
+                font-size: 14px;
+            }
+
+            .advantage p {
+                font-size: 11px;
+                line-height: 1.55;
+            }
+
+            .product-title h3 {
+                font-size: 17px;
+            }
+
+            .product-title small {
+                font-size: 11px;
+            }
+
+            .series-thumb {
+                width: min(110px, 44%);
+                margin-top: 14px;
+            }
+
+            th,
+            td {
+                padding: 6px;
+                font-size: 11px;
+                line-height: 1.5;
+            }
+
+            .material-list strong {
+                font-size: 14px;
+            }
+
+            .material-list span,
+            .about-copy p:not(.kicker) {
+                font-size: 12px;
+                line-height: 1.65;
+            }
+
+            .contact .section-head h2 {
+                font-size: 19px;
+            }
+
+            .contact .muted {
+                font-size: 12px;
+            }
+
+            .contact-line strong {
+                font-size: 14px;
+            }
+
+            .contact-line span,
+            label {
+                font-size: 12px;
+            }
+
+            input,
+            textarea {
+                padding: 9px 10px;
+                font-size: 13px;
+            }
         }
     </style>
 </head>
 <body>
     <header class="site-header">
-        <a class="brand" href="#home" aria-label="卡林托油墨首页">
+        <a class="brand" href="#home" aria-label="青龙草油墨首页">
             <!-- 图片修改位置：左上角青龙草商标，替换 src 里的图片文件。 -->
             <img class="brand-logo" src="images/qinglongcao-mark-white.png" alt="青龙草油墨商标">
-            <span class="brand-text">卡林托油墨</span>
+            <span class="brand-text">青龙草油墨</span>
         </a>
         <nav class="nav" aria-label="主导航">
             <a href="#products">产品</a>
@@ -1029,9 +1604,16 @@
 
     <main>
         <section id="home" class="hero">
+            <div class="hero-slider" aria-hidden="true">
+                <div class="hero-slide is-active" style="background-image: url('images/hero-main.png');"></div>
+                <div class="hero-slide" style="background-image: url('images/首页轮播图/hero-slide-02-blue-ink-pail.png');"></div>
+                <div class="hero-slide" style="background-image: url('images/首页轮播图/hero-slide-04-green-screen-printing.png');"></div>
+            </div>
+            <button class="hero-control prev" type="button" aria-label="上一张首页轮播图" data-hero-prev>&#8249;</button>
+            <button class="hero-control next" type="button" aria-label="下一张首页轮播图" data-hero-next>&#8250;</button>
             <div class="hero-inner">
                 <p class="eyebrow">UV Screen & Offset Ink / Since 2008</p>
-                <h1>卡林托油墨</h1>
+                <h1>卡林托油墨厂</h1>
                 <p class="hero-lead">为塑料印刷与包装行业提供稳定可靠的 UV 油墨解决方案。</p>
                 <div class="hero-actions">
                     <a class="button light" href="#products">查看产品体系</a>
@@ -1048,10 +1630,10 @@
                 </div>
                 <div>
                     <p class="kicker">公司简介</p>
-                    <p class="large-copy">卡林托成立于 2008 年，深耕油墨行业 17 年，集研发、生产、服务于一体。2012 年完成 UV 光固化技术转型，以环保、高效、高附着为核心，为塑料印刷与包装行业提供稳定可靠的油墨方案。</p>
+                    <p class="large-copy">本公司于 2003 年开始集研发、生产、服务于一体，生产溶剂型油墨，深耕油墨行业 23 年，旗下拥有多个品牌包括青龙草等，后于 2012 年完成 UV 光固化技术转型，并正式更名为卡林托，以环保、高效、高附着为核心，专注为塑料印刷与包装行业提供稳定可靠的油墨方案。</p>
                     <div class="proof-list">
                         <div class="proof-item">
-                            <span class="proof-number">17</span>
+                            <span class="proof-number">23</span>
                             <p>年 UV 油墨研发与生产经验</p>
                         </div>
                         <div class="proof-item">
@@ -1080,7 +1662,7 @@
                     <article class="category">
                         <div>
                             <strong>UV丝印系列</strong>
-                            <p>覆盖 F、E、P、AC 系列，适用于已处理 PE、PP、PET、ABS、PVC、PC、亚克力、涂层与电镀层等。</p>
+                            <p>产品系列包括LC、LB、A、AC、胶印系列等，适用于已处理 PE、PP、PET、ABS、PVC、PC、亚克力、涂层与电镀层等。</p>
                         </div>
                         <div class="swatch-row" aria-hidden="true">
                             <span class="swatch black"></span>
@@ -1125,8 +1707,8 @@
 
                 <article class="product-block">
                     <div class="product-title">
-                        <h3>F系列 UV丝印油墨</h3>
-                        <small>主用于汞灯，适合高速生产和手动印刷。</small>
+                        <h3>LC系列 UV丝印油墨</h3>
+                        <small>主用于汞灯，可改LED灯，适合高速生产和手动印刷。</small>
                         <!-- 图片修改位置：F系列产品小图，替换 images/product-f-series.png 这个文件或改 src。 -->
                         <img class="series-thumb" src="images/product-f-series.png" alt="F系列 UV丝印油墨产品小图">
                     </div>
@@ -1135,7 +1717,7 @@
                             <tbody>
                                 <tr>
                                     <th>光泽</th>
-                                    <td>主用于汞灯</td>
+                                    <td>主用于汞灯，可改LED灯</td>
                                 </tr>
                                 <tr>
                                     <th>主要适用底材</th>
@@ -1143,15 +1725,11 @@
                                 </tr>
                                 <tr>
                                     <th>性能</th>
-                                    <td>适合高速生产和手动印刷，光泽度好，附着力好，光固化速度比 E 系列慢些，固化后的墨层比 E 系列稍软。</td>
+                                    <td>适合高速生产和手动印刷，光泽度好，附着力好。</td>
                                 </tr>
                                 <tr>
                                     <th>耐性</th>
                                     <td>耐水性好，耐汽油。</td>
-                                </tr>
-                                <tr>
-                                    <th>开油水</th>
-                                    <td>2#、3#、8#、1#、11#</td>
                                 </tr>
                             </tbody>
                         </table>
@@ -1160,7 +1738,7 @@
 
                 <article class="product-block">
                     <div class="product-title">
-                        <h3>E系列 UV丝印油墨</h3>
+                        <h3>LB系列 UV丝印油墨</h3>
                         <small>可用于汞灯与 LED 灯，适合替代进口油墨。</small>
                         <!-- 图片修改位置：E系列产品小图，替换 images/product-e-series.png 这个文件或改 src。 -->
                         <img class="series-thumb" src="images/product-e-series.png" alt="E系列 UV丝印油墨产品小图">
@@ -1184,10 +1762,6 @@
                                     <th>耐性</th>
                                     <td>耐酒精、耐汽油、耐指刮、耐摩擦性好、耐水。</td>
                                 </tr>
-                                <tr>
-                                    <th>开油水</th>
-                                    <td>2#、3#、8#、1#、11#</td>
-                                </tr>
                             </tbody>
                         </table>
                     </div>
@@ -1195,8 +1769,8 @@
 
                 <article class="product-block">
                     <div class="product-title">
-                        <h3>P系列 UV丝印油墨</h3>
-                        <small>原 A 系列，主用于 PET 与多种塑料基材。</small>
+                        <h3>A系列 UV丝印油墨</h3>
+                        <small>主用于 PET 与多种塑料基材。</small>
                         <!-- 图片修改位置：P系列产品小图，替换 images/product-p-series.png 这个文件或改 src。 -->
                         <img class="series-thumb" src="images/product-p-series.png" alt="P系列 UV丝印油墨产品小图">
                     </div>
@@ -1218,10 +1792,6 @@
                                 <tr>
                                     <th>耐性</th>
                                     <td>耐酒精擦拭超 30 次。</td>
-                                </tr>
-                                <tr>
-                                    <th>开油水</th>
-                                    <td>1#、11#</td>
                                 </tr>
                             </tbody>
                         </table>
@@ -1248,15 +1818,11 @@
                                 </tr>
                                 <tr>
                                     <th>性能</th>
-                                    <td>可替代进口油墨，印刷性能好，对 PET 附着力好；固化后的韧性相较 A 系列稍弱，但耐酒精、耐水性好。对多种塑料基材、电镀层、涂层均有良好牢固度。</td>
+                                    <td>可替代进口油墨，印刷性能好，对 PET 附着力好；耐酒精、耐水性好。对多种塑料基材、电镀层、涂层均有良好牢固度。</td>
                                 </tr>
                                 <tr>
                                     <th>耐性</th>
                                     <td>耐酒精擦拭超 50 次、耐水泡、耐冷冻。</td>
-                                </tr>
-                                <tr>
-                                    <th>开油水</th>
-                                    <td>1#、11#、8#</td>
                                 </tr>
                             </tbody>
                         </table>
@@ -1265,7 +1831,7 @@
 
                 <article class="product-block">
                     <div class="product-title">
-                        <h3>J系列 UV胶印油墨</h3>
+                        <h3>胶印系列 UV胶印油墨</h3>
                         <small>适用于薄膜、纸张、标签纸、胶印机与轮转机。</small>
                         <!-- 图片修改位置：J系列产品小图，替换 images/product-j-series.png 这个文件或改 src。 -->
                         <img class="series-thumb" src="images/product-j-series.png" alt="J系列 UV胶印油墨产品小图">
@@ -1288,10 +1854,6 @@
                                 <tr>
                                     <th>耐性</th>
                                     <td>耐酒精、耐汽油、耐水。</td>
-                                </tr>
-                                <tr>
-                                    <th>开油水</th>
-                                    <td>20#</td>
                                 </tr>
                             </tbody>
                         </table>
@@ -1320,8 +1882,8 @@
                         <p>UV 技术秒级固化，提升产线效率，帮助客户降本增效。</p>
                     </article>
                     <article class="advantage">
-                        <h3>权威检测</h3>
-                        <p>通过 SGS RoHS、CTI VOC 检测，符合环保与合规要求。</p>
+                        <h3>合规配合</h3>
+                        <p>按客户要求配合 RoHS、VOC 等第三方检测流程，便于环保与合规资料准备。</p>
                     </article>
                 </div>
             </div>
@@ -1360,9 +1922,22 @@
                 <div class="section-head">
                     <p class="kicker">新闻与文章</p>
                     <div>
-                        <h2>文章内容暂时留空，后续用于发布企业新闻与技术文章。</h2>
-                        <p class="muted">这里以后可以放行业资讯、材料测试、油墨应用案例、常见故障处理和新品说明。</p>
+                        <h2>把测试经验整理成文章，帮助客户更快判断问题。</h2>
+                        <p class="muted">后续这里会更新行业资讯、材料测试、油墨应用案例、常见故障处理和新品说明。</p>
                     </div>
+                </div>
+                <div class="news-grid">
+                    <a class="news-card" href="article-kalintuo.html" aria-label="阅读文章：UV塑料油墨耐酒精怎么测？化妆品瓶印刷客户要注意这几个条件">
+                        <img src="images/application-screen-printing-orange-reference-01.png" alt="橙色 UV 油墨丝印测试场景">
+                        <div class="news-card-body">
+                            <span class="news-date">技术文章</span>
+                            <h3>UV塑料油墨耐酒精怎么测？化妆品瓶印刷客户要注意这几个条件</h3>
+                            <p>耐酒精测试不能只看“擦一下掉不掉色”，需要明确酒精浓度、擦拭方式、固化条件和判定标准。</p>
+                            <span class="news-link">阅读全文</span>
+                        </div>
+                    </a>
+                    <div class="news-card empty" aria-hidden="true"></div>
+                    <div class="news-card empty" aria-hidden="true"></div>
                 </div>
             </div>
         </section>
@@ -1372,7 +1947,7 @@
                 <div class="about-copy">
                     <p class="kicker">关于卡林托</p>
                     <h2>珠三角 UV 丝印与胶印油墨源头厂家。</h2>
-                    <p>佛山市顺德区卡林托油墨专注 UV 丝印、UV 胶印油墨研发与生产，产品具备固化快、附着力强、环保低气味等特点，面向塑料印刷厂、油墨师傅与经销商<span class="nowrap">提供稳定产品与技术支持。</span></p>
+                    <p>佛山市顺德区卡林托油墨厂专注 UV 丝印、UV 胶印油墨研发与生产，产品具备固化快、附着力强、环保低气味等特点，面向塑料印刷厂、油墨师傅与经销商<span class="nowrap">提供稳定产品与技术支持。</span></p>
                     <p>我们关注的不是单一型号，而是客户上机后的稳定性：底材是否处理到位、灯源是否匹配、固化速度是否跟得上产线、后加工耐性是否达标。</p>
                 </div>
                 <div class="about-photo">
@@ -1395,7 +1970,7 @@
                     <div class="contact-lines">
                         <div class="contact-line">
                             <strong>咨询热线</strong>
-                            <span>13703018654</span>
+                                <span>13703018654 彭小姐&nbsp;&nbsp;18928545891 黄经理</span>
                         </div>
                         <div class="contact-line">
                             <strong>地址</strong>
@@ -1406,20 +1981,36 @@
                             <span>UV丝印油墨、UV胶印油墨、经销商合作、定制配方、上门技术指导</span>
                         </div>
                     </div>
-                    <form class="form" onsubmit="alert('当前是静态预览页，咨询信息不会自动发送。请通过电话或微信联系：13703018654'); return false;">
+                    <form class="form" action="https://api.web3forms.com/submit" method="POST" novalidate>
+                        <input type="hidden" name="subject" value="卡林托官网询盘">
+                        <input type="hidden" name="from_name" value="卡林托官网">
+                        <input type="hidden" name="source_url" value="">
+                        <input type="hidden" name="referer" value="">
+                        <input type="hidden" name="utm_params" value="">
+                        <input type="hidden" name="submit_time" value="">
+                        <div class="form-honeypot" aria-hidden="true">
+                            <label>
+                                网站地址
+                                <input type="text" name="website_url" tabindex="-1" autocomplete="off">
+                            </label>
+                        </div>
                         <label>
                             公司 / 姓名
-                            <input type="text" name="name" placeholder="请输入您的称呼">
+                            <input type="text" name="name" placeholder="请输入您的称呼" required minlength="2" maxlength="50" aria-describedby="name-error" aria-invalid="false">
+                            <span class="field-error" id="name-error" aria-live="polite"></span>
                         </label>
                         <label>
                             电话 / 微信
-                            <input type="text" name="phone" placeholder="请输入联系方式">
+                            <input type="text" name="contact" placeholder="请输入联系方式" required minlength="5" maxlength="30" aria-describedby="contact-error" aria-invalid="false">
+                            <span class="field-error" id="contact-error" aria-live="polite"></span>
                         </label>
                         <label>
                             咨询需求
-                            <textarea name="message" placeholder="例如：PET 材料，LED 固化，要求耐酒精擦拭"></textarea>
+                            <textarea name="message" maxlength="500" placeholder="例如：PET材料，LED固化，要求耐酒精擦拭。" aria-describedby="message-error" aria-invalid="false"></textarea>
+                            <span class="field-error" id="message-error" aria-live="polite"></span>
                         </label>
                         <button class="button" type="submit">提交询价</button>
+                        <p class="form-status" aria-live="polite"></p>
                     </form>
                 </div>
             </div>
@@ -1431,6 +2022,7 @@
             <div>
                 <span class="footer-brand">卡林托油墨</span>
                 <span>© 2026 佛山市顺德区卡林托油墨厂 版权所有。</span>
+                <a class="footer-record" href="https://beian.miit.gov.cn/" target="_blank" rel="noopener noreferrer">粤ICP备2026075192号</a>
             </div>
             <nav class="footer-links" aria-label="页脚导航">
                 <a href="#home">首页</a>
@@ -1443,5 +2035,223 @@
             </nav>
         </div>
     </footer>
+    <script>
+        (() => {
+            const slides = Array.from(document.querySelectorAll(".hero-slide"));
+            const prev = document.querySelector("[data-hero-prev]");
+            const next = document.querySelector("[data-hero-next]");
+            if (slides.length <= 1) {
+                return;
+            }
+
+            let current = 0;
+            let timer = null;
+            const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+            const showSlide = (index) => {
+                slides[current].classList.remove("is-active");
+                current = (index + slides.length) % slides.length;
+                slides[current].classList.add("is-active");
+            };
+
+            const startAutoPlay = () => {
+                if (reduceMotion) {
+                    return;
+                }
+
+                window.clearInterval(timer);
+                timer = window.setInterval(() => {
+                    showSlide(current + 1);
+                }, 5200);
+            };
+
+            prev?.addEventListener("click", () => {
+                showSlide(current - 1);
+                startAutoPlay();
+            });
+
+            next?.addEventListener("click", () => {
+                showSlide(current + 1);
+                startAutoPlay();
+            });
+
+            startAutoPlay();
+        })();
+
+        (() => {
+            const forms = Array.from(document.querySelectorAll('form[action="https://api.web3forms.com/submit"]'));
+
+            forms.forEach((form) => {
+                const button = form.querySelector('button[type="submit"]');
+                const status = form.querySelector(".form-status");
+                const defaultButtonText = button?.textContent || "提交询价";
+                const nameField = form.elements.namedItem("name");
+                const contactField = form.elements.namedItem("contact");
+                const messageField = form.elements.namedItem("message");
+                const honeypotField = form.elements.namedItem("website_url");
+
+                const setButtonLoading = (loading) => {
+                    if (!button) {
+                        return;
+                    }
+
+                    button.disabled = loading;
+                    button.textContent = loading ? "提交中，请稍候..." : defaultButtonText;
+                };
+
+                const clearErrors = () => {
+                    form.querySelectorAll(".field-error").forEach((error) => {
+                        error.textContent = "";
+                    });
+                    form.querySelectorAll("label.has-error").forEach((label) => {
+                        label.classList.remove("has-error");
+                    });
+                    form.querySelectorAll('[aria-invalid="true"]').forEach((field) => {
+                        field.setAttribute("aria-invalid", "false");
+                    });
+                };
+
+                const showFieldError = (field, message) => {
+                    if (!field) {
+                        return;
+                    }
+
+                    field.setAttribute("aria-invalid", "true");
+                    field.closest("label")?.classList.add("has-error");
+                    const errorId = field.getAttribute("aria-describedby");
+                    const error = errorId ? form.querySelector(`#${errorId}`) : null;
+                    if (error) {
+                        error.textContent = message;
+                    }
+                };
+
+                const populateMetadata = () => {
+                    const sourceUrl = form.elements.namedItem("source_url");
+                    const referer = form.elements.namedItem("referer");
+                    const utmParams = form.elements.namedItem("utm_params");
+                    const submitTime = form.elements.namedItem("submit_time");
+                    const url = new URL(window.location.href);
+                    const trackedUtm = new URLSearchParams();
+
+                    ["utm_source", "utm_medium", "utm_campaign", "utm_content", "utm_term"].forEach((key) => {
+                        const value = url.searchParams.get(key);
+                        if (value) {
+                            trackedUtm.set(key, value);
+                        }
+                    });
+
+                    if (sourceUrl) {
+                        sourceUrl.value = window.location.href;
+                    }
+                    if (referer) {
+                        referer.value = document.referrer || "";
+                    }
+                    if (utmParams) {
+                        utmParams.value = trackedUtm.toString();
+                    }
+                    if (submitTime) {
+                        submitTime.value = new Date().toISOString();
+                    }
+                };
+
+                const validateForm = () => {
+                    clearErrors();
+                    let firstInvalidField = null;
+                    const nameValue = nameField?.value.trim() || "";
+                    const contactValue = contactField?.value.trim() || "";
+                    const messageValue = messageField?.value.trim() || "";
+
+                    if (nameField) {
+                        nameField.value = nameValue;
+                    }
+                    if (contactField) {
+                        contactField.value = contactValue;
+                    }
+                    if (messageField) {
+                        messageField.value = messageValue;
+                    }
+
+                    if (nameValue.length < 2 || nameValue.length > 50) {
+                        showFieldError(nameField, "请填写您的姓名或公司名称。");
+                        firstInvalidField ||= nameField;
+                    }
+
+                    const looksLikeMainlandMobile = /^1\d{10}$/.test(contactValue);
+                    const validMainlandMobile = /^1[3-9]\d{9}$/.test(contactValue);
+                    if (
+                        contactValue.length < 5 ||
+                        contactValue.length > 30 ||
+                        (looksLikeMainlandMobile && !validMainlandMobile)
+                    ) {
+                        showFieldError(contactField, "请填写有效的电话或微信，方便我们联系您。");
+                        firstInvalidField ||= contactField;
+                    }
+
+                    if (messageValue.length > 500) {
+                        showFieldError(messageField, "咨询需求最多填写 500 个字符。");
+                        firstInvalidField ||= messageField;
+                    }
+
+                    firstInvalidField?.focus();
+                    return !firstInvalidField;
+                };
+
+                populateMetadata();
+
+                form.addEventListener("submit", async (event) => {
+                    event.preventDefault();
+
+                    if (!button || !status) {
+                        return;
+                    }
+
+                    setButtonLoading(false);
+                    status.textContent = "";
+                    status.className = "form-status";
+
+                    if (honeypotField?.value.trim()) {
+                        status.textContent = "提交失败，请稍后重试，或直接电话联系 13703018654。";
+                        status.classList.add("is-error");
+                        return;
+                    }
+
+                    if (!validateForm()) {
+                        setButtonLoading(false);
+                        return;
+                    }
+
+                    populateMetadata();
+                    setButtonLoading(true);
+
+                    try {
+                        const response = await fetch(form.action, {
+                            method: "POST",
+                            body: new FormData(form),
+                            headers: {
+                                Accept: "application/json"
+                            }
+                        });
+                        const result = await response.json().catch(() => null);
+
+                        if (response.ok && result?.success) {
+                            status.textContent = "提交成功！我们已收到您的咨询需求，将尽快联系您。";
+                            status.classList.add("is-success");
+                            form.reset();
+                            clearErrors();
+                            populateMetadata();
+                        } else {
+                            status.textContent = "提交失败，请稍后重试，或直接电话联系 13703018654。";
+                            status.classList.add("is-error");
+                        }
+                    } catch (error) {
+                        status.textContent = "提交失败，请稍后重试，或直接电话联系 13703018654。";
+                        status.classList.add("is-error");
+                    } finally {
+                        setButtonLoading(false);
+                    }
+                });
+            });
+        })();
+    </script>
 </body>
 </html>

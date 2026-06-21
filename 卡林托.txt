@@ -19,6 +19,30 @@
             --white: #fffaf2;
         }
 
+        @font-face {
+            font-family: "Inter";
+            src: url("fonts/Inter-Variable.ttf") format("truetype");
+            font-weight: 100 900;
+            font-style: normal;
+            font-display: swap;
+        }
+
+        @font-face {
+            font-family: "Noto Sans SC";
+            src: url("fonts/NotoSansSC-Variable.ttf") format("truetype");
+            font-weight: 100 900;
+            font-style: normal;
+            font-display: swap;
+        }
+
+        @font-face {
+            font-family: "Noto Serif SC";
+            src: url("fonts/NotoSerifSC-Variable.ttf") format("truetype");
+            font-weight: 100 900;
+            font-style: normal;
+            font-display: swap;
+        }
+
         * {
             box-sizing: border-box;
         }
@@ -27,12 +51,12 @@
             scroll-behavior: smooth;
         }
 
-        /* 字体修改位置：全站正文字体改这里；想换中文字体，把 "Microsoft YaHei" 换成你的字体名。 */
+        /* 字体修改位置：全站正文字体改这里；当前字体均使用 OFL 免费商用字体。 */
         body {
             margin: 0;
             background: var(--paper);
             color: var(--ink);
-            font-family: "Inter", "Helvetica Neue", Arial, "PingFang SC", "Microsoft YaHei", sans-serif;
+            font-family: "Inter", "Noto Sans SC", sans-serif;
             font-size: 16px;
             line-height: 1.7;
             letter-spacing: 0;
@@ -161,7 +185,7 @@
         .hero h1 {
             max-width: 760px;
             margin: 0;
-            font-family: Georgia, "Times New Roman", "Songti SC", serif;
+            font-family: "Noto Serif SC", serif;
             font-size: clamp(48px, 7vw, 102px);
             font-weight: 400;
             line-height: 0.98;
@@ -254,7 +278,7 @@
             margin-bottom: 64px;
         }
 
-        /* 图片修改位置：产品体系橙色刷痕背景，替换 images/orange-brush-ink-bg.png。 */
+        /* 图片修改位置：产品体系橙色刷痕背景，替换 images/orange-brush-ink-bg-top-paper.png。 */
         .product-hero {
             position: relative;
             height: clamp(360px, 37.5vw, 720px);
@@ -264,7 +288,7 @@
             overflow: hidden;
             margin: 0 0 72px;
             color: #ffffff;
-            background: #ffffff url("images/orange-brush-ink-bg.png") center / 100% 100% no-repeat;
+            background: var(--paper-deep) url("images/orange-brush-ink-bg-top-paper.png") center / 100% 100% no-repeat;
         }
 
         .product-hero::before,
@@ -295,7 +319,7 @@
         .product-hero h2 {
             margin-top: 18px;
             color: #ffffff;
-            font-family: "Inter", "Helvetica Neue", Arial, "PingFang SC", "Microsoft YaHei", sans-serif;
+            font-family: "Inter", "Noto Sans SC", sans-serif;
             font-size: clamp(44px, 5vw, 72px);
             font-weight: 800;
             line-height: 1.08;
@@ -321,7 +345,7 @@
         /* 字体修改位置：各栏目大标题字体改这里。 */
         h2 {
             margin: 0;
-            font-family: Georgia, "Times New Roman", "Songti SC", serif;
+            font-family: "Noto Serif SC", serif;
             font-size: clamp(34px, 4.8vw, 64px);
             font-weight: 400;
             line-height: 1.08;
@@ -330,7 +354,7 @@
 
         h3 {
             margin: 0;
-            font-family: Georgia, "Times New Roman", "Songti SC", serif;
+            font-family: "Noto Serif SC", serif;
             font-size: 28px;
             font-weight: 400;
             line-height: 1.2;
@@ -398,7 +422,7 @@
         .proof-number {
             display: block;
             margin-bottom: 16px;
-            font-family: Georgia, "Times New Roman", serif;
+            font-family: "Noto Serif SC", serif;
             font-size: 40px;
             line-height: 1;
         }
@@ -571,12 +595,12 @@
             align-items: stretch;
         }
 
-        /* 图片修改位置：应用场景右侧背景图，替换下面 url(...) 里的图片地址。 */
+        /* 图片修改位置：应用场景左侧背景图，替换下面 url(...) 里的图片地址。 */
         .material-photo {
             min-height: 520px;
             background-image:
                 linear-gradient(180deg, rgba(29, 27, 24, 0.05), rgba(29, 27, 24, 0.28)),
-                url("images/application-screen-printing-unsplash.jpg");
+                url("images/application-screen-printing-orange-reference-01.png");
             background-size: cover;
             background-position: center;
         }
@@ -619,46 +643,100 @@
 
         .news-grid {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 1px;
-            background: var(--line);
-            border: 1px solid var(--line);
+            grid-template-columns: repeat(3, minmax(0, 340px));
+            justify-content: center;
+            gap: 24px;
+            background: transparent;
+            border: 0;
         }
 
         .news-card {
-            display: grid;
-            grid-template-rows: auto 1fr;
-            background: var(--paper);
-            min-height: 100%;
+            position: relative;
+            display: block;
+            min-height: 430px;
+            overflow: hidden;
+            color: var(--white);
+            background: var(--green-deep);
+            border-radius: 8px;
+            transition: transform 180ms ease, box-shadow 180ms ease;
+        }
+
+        .news-card::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, rgba(29, 27, 24, 0.02) 0%, rgba(29, 27, 24, 0.34) 44%, rgba(29, 27, 24, 0.86) 100%);
+            pointer-events: none;
         }
 
         .news-card img {
+            position: absolute;
+            inset: 0;
             width: 100%;
-            aspect-ratio: 4 / 3;
+            height: 100%;
             object-fit: cover;
-            background: #d0c4b4;
+            transition: transform 260ms ease;
         }
 
         .news-card-body {
+            position: absolute;
+            inset: auto 0 0;
+            z-index: 1;
             display: flex;
             flex-direction: column;
-            gap: 16px;
-            padding: 28px;
+            gap: 14px;
+            padding: 30px;
         }
 
         .news-date {
-            color: var(--green);
-            font-size: 13px;
+            color: rgba(255, 250, 242, 0.84);
+            font-size: 15px;
             font-weight: 700;
         }
 
         .news-card h3 {
-            font-size: 27px;
+            color: #ffffff;
+            font-size: 25px;
+            line-height: 1.35;
         }
 
         .news-card p {
             margin: 0;
-            color: var(--muted);
+            color: rgba(255, 250, 242, 0.82);
+            font-size: 17px;
+            line-height: 1.65;
+        }
+
+        .news-link {
+            margin-top: 8px;
+            color: #ffffff;
+            font-size: 16px;
+            font-weight: 800;
+        }
+
+        .news-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 18px 40px rgba(31, 26, 20, 0.12);
+        }
+
+        .news-card:hover img {
+            transform: scale(1.045);
+        }
+
+        .news-card.empty {
+            background: rgba(255, 250, 242, 0.42);
+            border: 1px solid var(--line);
+            box-shadow: none;
+            cursor: default;
+        }
+
+        .news-card.empty::after {
+            display: none;
+        }
+
+        .news-card.empty:hover {
+            transform: none;
+            box-shadow: none;
         }
 
         .about-band {
@@ -1011,10 +1089,10 @@
 </head>
 <body>
     <header class="site-header">
-        <a class="brand" href="#home" aria-label="卡林托油墨首页">
+        <a class="brand" href="#home" aria-label="青龙草油墨首页">
             <!-- 图片修改位置：左上角青龙草商标，替换 src 里的图片文件。 -->
             <img class="brand-logo" src="images/qinglongcao-mark-white.png" alt="青龙草油墨商标">
-            <span class="brand-text">卡林托油墨</span>
+            <span class="brand-text">青龙草油墨</span>
         </a>
         <nav class="nav" aria-label="主导航">
             <a href="#products">产品</a>
@@ -1031,7 +1109,7 @@
         <section id="home" class="hero">
             <div class="hero-inner">
                 <p class="eyebrow">UV Screen & Offset Ink / Since 2008</p>
-                <h1>卡林托油墨</h1>
+                <h1>卡林托油墨厂</h1>
                 <p class="hero-lead">为塑料印刷与包装行业提供稳定可靠的 UV 油墨解决方案。</p>
                 <div class="hero-actions">
                     <a class="button light" href="#products">查看产品体系</a>
@@ -1048,7 +1126,7 @@
                 </div>
                 <div>
                     <p class="kicker">公司简介</p>
-                    <p class="large-copy">卡林托成立于 2008 年，深耕油墨行业 17 年，集研发、生产、服务于一体。2012 年完成 UV 光固化技术转型，以环保、高效、高附着为核心，为塑料印刷与包装行业提供稳定可靠的油墨方案。</p>
+                    <p class="large-copy">卡林托于 2003 年开始集研发、生产、服务于一体，深耕油墨行业 23 年，旗下拥有多个品牌包括青龙草等，后于 2012 年完成 UV 光固化技术转型，并正式更名为卡林托，以环保、高效、高附着为核心，专注为塑料印刷与包装行业提供稳定可靠的油墨方案。</p>
                     <div class="proof-list">
                         <div class="proof-item">
                             <span class="proof-number">17</span>
@@ -1360,9 +1438,22 @@
                 <div class="section-head">
                     <p class="kicker">新闻与文章</p>
                     <div>
-                        <h2>文章内容暂时留空，后续用于发布企业新闻与技术文章。</h2>
-                        <p class="muted">这里以后可以放行业资讯、材料测试、油墨应用案例、常见故障处理和新品说明。</p>
+                        <h2>把测试经验整理成文章，帮助客户更快判断问题。</h2>
+                        <p class="muted">后续这里会更新行业资讯、材料测试、油墨应用案例、常见故障处理和新品说明。</p>
                     </div>
+                </div>
+                <div class="news-grid">
+                    <a class="news-card" href="article-kalintuo.html" aria-label="阅读文章：UV塑料油墨耐酒精怎么测？化妆品瓶印刷客户要注意这几个条件">
+                        <img src="images/application-screen-printing-orange-reference-01.png" alt="橙色 UV 油墨丝印测试场景">
+                        <div class="news-card-body">
+                            <span class="news-date">技术文章</span>
+                            <h3>UV塑料油墨耐酒精怎么测？化妆品瓶印刷客户要注意这几个条件</h3>
+                            <p>耐酒精测试不能只看“擦一下掉不掉色”，需要明确酒精浓度、擦拭方式、固化条件和判定标准。</p>
+                            <span class="news-link">阅读全文</span>
+                        </div>
+                    </a>
+                    <div class="news-card empty" aria-hidden="true"></div>
+                    <div class="news-card empty" aria-hidden="true"></div>
                 </div>
             </div>
         </section>
